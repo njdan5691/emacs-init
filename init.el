@@ -6,7 +6,6 @@
         (lambda nil " $ "))
   (setenv "PAGER" "cat"))
 
-
 (use-package csv-mode                                                                               
   :mode "\\.csv\\'"
   :ensure t)
