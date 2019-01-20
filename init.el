@@ -1,2 +1,10 @@
 ;;; Example File
-(message "Run This Code")
+
+(use-package csv-mode                                                                               
+  :mode "\\.csv\\'"
+  :ensure t)
+
+(use-package markdown-mode
+  :defer t
+  :ensure)
+
