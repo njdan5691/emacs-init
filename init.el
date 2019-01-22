@@ -276,8 +276,8 @@
 
 (use-package counsel-gtags
   :defer t
-  :ensure t)
-
+  :ensure t
+  :requires swiper)
 
 
 (use-package ivy
@@ -328,6 +328,7 @@
   :defer t
   :bind (("C-s" . counsel-grep-or-swiper)
          ("C-x C-r" . counsel-recentf))
+  :requires swiper
   :ensure t)
 
 ;; (use-package org-mode
