@@ -1,11 +1,11 @@
 ;;; Example File
 
-;; (use-package org-mode                                                                            
-;;  :mode "\\.org$"                                                                                 
-;;  :ensure org                                                                                     
-;;  :init                                                                                           
-;;  (progn                                                                                          
-;;    (setq org-startup-truncated nil)))      
+;; (use-package org-mode
+;;  :mode "\\.org$"
+;;  :ensure org
+;;  :init
+;;  (progn
+;;    (setq org-startup-truncated nil)))
 
 (bind-keys :map global-map
            :prefix-map my-prefix-map-l
@@ -54,10 +54,8 @@
 (use-package kmacro
   :config
   (defun zz:macro-query (arg)
-    "Prompt for input using minibuffer during kbd macro execution.                                 \
-                                                                                                    
-With prefix argument, allows you to select what prompt string to use.                              \
-                                                                                                    
+    "Prompt for input using minibuffer during kbd macro execution.                                 \                                                                                       
+With prefix argument, allows you to select what prompt string to use.                              \                                                                                       
 If the input is non-empty, it is inserted at point."
     (interactive "P")
     (let* ((prompt (if arg (read-from-minibuffer "PROMPT: ") "Input: "))
