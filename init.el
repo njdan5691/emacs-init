@@ -1,5 +1,12 @@
 ;;; Example File
 
+;; (use-package org-mode                                                                            
+;;  :mode "\\.org$"                                                                                 
+;;  :ensure org                                                                                     
+;;  :init                                                                                           
+;;  (progn                                                                                          
+;;    (setq org-startup-truncated nil)))      
+
 (bind-keys :map global-map
            :prefix-map my-prefix-map-l
            :prefix "C-l"
