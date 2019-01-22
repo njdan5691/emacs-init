@@ -44,6 +44,12 @@
            ("C-c a" . apropos-command)
            ("C-x C-o" . find-file))
 
+(use-package el-get
+  :defer t
+  :ensure t)
+
+(el-get-bundle njdan5691/elisp-misc)                                                               
+
 (use-package engine-mode
   ;; default keymap is bound to "C-x /"
   :config
