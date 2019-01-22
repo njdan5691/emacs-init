@@ -1,5 +1,75 @@
 ;;; Example File
 
+(use-package cc-mode
+  :config
+  (defun my-c-mode-hook ()
+    (global-hl-line-mode -1)
+    (setq-local eldoc-echo-area-use-multiline-p t)
+    (bind-keys :map global-map
+               :prefix-map zz:ggtags-prefix
+               :prefix "C-c g")
+    (bind-keys :map global-map
+               :prefix-map zz:yankpad-prefix
+               :prefix "C-c y")
+    (defun zz:select-snippet ()
+      (interactive)
+      (unless yankpad-category
+        (or (yankpad-local-category-to-major-mode)
+            (yankpad-set-category)))
+      (let ((name (ivy-read "Snippet:" (yankpad-active-snippets))))
+        (let ((snippet (assoc name (yankpad-active-snippets))))
+          (if snippet
+              (yankpad--run-snippet snippet)
+            (message (concat "No snippet named " name))))))
+
+    (bind-keys :map c-mode-base-map
+               ("C-l TAB" . elispm:reformat-buffer)
+               ("C-l z" . zz:indent-with-gnu-indent)
+               ("C-l x" . c-mark-function)
+               ("C-l c" . compile)
+               ("C-c t" . elispm:toggle-tab-width)
+               ("C-c g d" . ggtags-find-definition)                                                                                   
+               ("C-c g o" . ggtags-find-other-symbol)
+               ("C-c g e" . ggtags-find-tag-regexp)
+               ("C-c g g" . ggtags-grep)
+               ("C-c g r" . ggtags-find-reference)
+               ("C-c g f" . counsel-gtags-find-file)
+               ("C-c y a" . yankpad-append-category)
+               ("C-c y e" . yankpad-edit)
+               ("C-c y c" . yankpad-capture-snippet)
+               ("C-c y x" . zz:select-snippet)
+               ("C-c y r" . yankpad-reload)
+               ("C-c y i" . yankpad-insert)
+               ("C-c y s" . yankpad-set-category)
+               ("M-." . ggtags-find-tag-dwim)
+               ("M-?" . ggtags-show-definition)
+               ("M-," . ggtags-prev-mark)
+               ("M-p" . beginning-of-defun)
+               ("M-n" . end-of-defun))
+
+    (setq comment-start "// "
+          comment-end ""
+          show-trailing-whitespace t)
+    (c-toggle-auto-state 1)
+    (c-toggle-hungry-state 1)
+    (setq ac-sources (delete 'ac-source-dictionary ac-sources))
+    (c-set-offset 'comment-intro 0)
+    (c-set-offset 'arglist-intro '+)
+    (c-set-offset 'arglist-cont-nonempty '+)
+    (transient-mark-mode 1))
+  (add-hook 'c-mode-common-hook #'rainbow-delimiters-mode)
+  (add-hook 'c-mode-common-hook #'aggressive-indent-mode)
+  (add-hook 'c-mode-common-hook #'elispm:my-auto-complete-disabling-hook)
+  (add-hook 'c-mode-common-hook #'my-c-mode-hook))
+
+
+(use-package easy-kill
+  :init
+  (global-set-key [remap kill-ring-save] 'easy-kill)
+  (global-set-key [remap mark-paragraph] 'easy-mark)
+  :defer t
+  :ensure t)
+
 (use-package smex
   :defer t
   :ensure t
