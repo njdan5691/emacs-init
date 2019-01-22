@@ -304,7 +304,6 @@
     (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
     (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
     (add-hook 'emacs-lisp-mode-hook 'zz:disable-tabs)
-    (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
     (bind-key "M-." 'find-function-at-point)))
 
 (use-package recentf-ext
