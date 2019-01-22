@@ -1,5 +1,81 @@
 ;;; Example File
 
+(bind-keys :map global-map
+           :prefix-map zz:idev-prefix
+           :prefix "C-l")
+
+(require 'bind-key)
+(require 'dired-x)
+
+(global-unset-key (kbd "<f1>"))
+(global-unset-key (kbd "<f2>"))
+(global-unset-key (kbd "<f3>"))
+(global-unset-key (kbd "<f11>"))
+(global-unset-key (kbd "<f10>"))
+
+(bind-keys :map global-map
+           ("C-z" . save-buffers-kill-emacs)
+           ("C-x k" . kill-this-buffer)
+           ("<f1>" . menu-bar-open)
+           ("M-1" . menu-bar-open)
+           ("<f2>" . shell-command)
+           ("M-2" . shell-command)
+           ("<f4>" . grep)
+           ("M-4" . grep)
+           ("<f7>" . copy-to-register)
+           ("M-7" . copy-to-register)
+           ("<f8>" . insert-register)
+           ("M-8" . insert-register)                                                               
+           ("<f10>" . package-list-packages)
+           ("M-0" . package-list-packages)
+           ("C-+" . text-scale-increase)
+           ("C--" . text-scale-decrease)
+           ("C-c r" . replace-string)
+           ("C-c R" . replace-regexp)
+           ("C-c t" . zz:toggle-tab-width)
+           ("C-c q" . query-replace)
+           ("C-c Q" . query-replace-regexp)
+           ("C-c a" . apropos-command)
+           ("C-x C-o" . find-file))
+
+(use-package engine-mode
+  ;; default keymap is bound to "C-x /"
+  :config
+  (require 'format-spec)
+  (progn
+    (setq engine/browser-function 'eww-browser-url)
+    (defengine google
+      "https://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"
+      :keybinding "g"
+      :browser 'eww-browse-url
+      )
+    (defengine gist-github
+      "https://gist.github.com/search?utf=1&&q=%s"
+      :keybinding "G"
+      :browser 'eww-browse-url                                                                     
+      )
+    (defengine dicionary
+      "https://www.wikipedia.org/search-redirect.php?family=wiktionary&language=en&go=Go&search=%s\
+"
+      :keybinding "d"
+      :browser 'eww-browse-url
+      )
+    (engine-mode 1))
+  :ensure t)
+
+
+
+
+
+
+(use-package hi-lock
+  :bind (("M-o l" . highlight-lines-matching-regexp)
+         ("M-o r" . highlight-regexp)
+         ("M-o w" . highlight-phrase)))
+
+
+
+
 (use-package compile
   :config
   (setq nmake-command "nmake"))
