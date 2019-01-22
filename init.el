@@ -237,27 +237,11 @@
   :commands aggressive-indent-mode
   :diminish aggressive-indent-mode
   :config
-  (aggressive-indent-mode t))                                                                       
-
-(use-package ggtags
-  :diminish ggtags-mode
-  :config
-  (progn
-    (setq ggtags-use-sqlite3 1)
-    (setq-local imenu-create-index-function #'ggtags-build-imenu-index)
-    (add-hook 'c-mode-common-hook
-              (lambda ()
-                (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
-                  (ggtags-mode 1)))))
-  :ensure t)
-
-(use-package counsel-gtags
-  :defer t
-  :ensure t)
-
+  (aggressive-indent-mode t))     
 
 (use-package swiper
   :defer t
+  :ensure t
   :config
   (setq ivy-use-virtual-buffers t)
   (setq ivy-count-format "(%d/%d) ")
@@ -275,6 +259,25 @@
          ("M-i" . counsel-imenu)
          ("M-x" . counsel-M-x)
          ))
+
+
+
+(use-package ggtags
+  :diminish ggtags-mode
+  :config
+  (progn
+    (setq ggtags-use-sqlite3 1)
+    (setq-local imenu-create-index-function #'ggtags-build-imenu-index)
+    (add-hook 'c-mode-common-hook
+              (lambda ()
+                (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+                  (ggtags-mode 1)))))
+  :ensure t)
+
+(use-package counsel-gtags
+  :defer t
+  :ensure t)
+
 
 
 (use-package ivy
