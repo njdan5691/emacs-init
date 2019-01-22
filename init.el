@@ -30,11 +30,31 @@ If the input is non-empty, it is inserted at point."
 
   (global-set-key "\C-xQ" 'zz:macro-query))
 
-
 (use-package yankpad
   :config
   (setq yankpad-file (expand-file-name "~/.emacs.d/yankpad.org"))
   :ensure t)
+use-package dired-x
+  :bind (("C-l C-o" . dired-omit-mode))
+  :bind (("C-c D" . find-name-dired))
+  :bind (("C-c o" . zz:dired-open-file))
+  :commands (dired-dwim-target-directory)
+  :config
+  (defun zz:dired-open-file ()
+    "In dired, open the file named on this line."
+    (interactive)
+    (let* ((file (dired-get-filename nil t)))
+      (call-process "xdg-open" nil 0 nil file)))
+  (progn
+    (setq dired-omit-verbose nil)
+    (setq-default dired-omit-files-p t) ; Buffer-local variable                                     
+    ;;(setq dired-omit-files (concat dired-omit-files "\\|\\.ms$\\|\\.o$\\|^\\..+$"))               
+    (setq dired-omit-files "^\\.[^.]\\|\\.ms$\\|\\.o$")
+    ;; hide backup, autosave, *.*~ files                                                            
+    ;; omit mode can be toggled using `M-o' in dired buffer                                         
+    (add-hook 'dired-mode-hook #'dired-omit-mode)))
+
+
 
 (use-package files
   :bind (("C-l C-k" . elispm:kill-other-buffers))
