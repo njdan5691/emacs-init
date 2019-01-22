@@ -1,5 +1,30 @@
 ;;; Example File
 
+(use-package recentf-ext
+  :ensure t)
+
+(use-package flyspell
+  :config
+  (add-hook 'text-mode-hook #'flyspell-mode))
+
+(use-package ibuffer-mode
+  :bind ("C-x C-b" . ibuffer))
+
+(use-package shell
+  :config
+  (defun zz:comint-init()                                                                           
+    (setq comint-process-echoes t))
+  (add-hook 'comint-mode-hook 'zz:comint-init))
+
+(use-package makefile
+  :mode (("\\.nmk\\'" . makefile-gmake-mode)))
+
+(use-package  counsel
+  :defer t
+  :bind (("C-s" . counsel-grep-or-swiper)
+         ("C-x C-r" . counsel-recentf))
+  :ensure t)
+
 ;; (use-package org-mode
 ;;  :mode "\\.org$"
 ;;  :ensure org
