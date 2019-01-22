@@ -1,5 +1,35 @@
 ;;; Example File
 
+(bind-keys :map global-map
+           :prefix-map my-prefix-map-l
+           :prefix "C-l"
+           ("s" . isearch-forward)
+           ("r" . isearch-backward)
+           ("l" . load-file)
+           ("C-l" . recenter))
+
+(use-package vimish-fold
+  :bind (("C-c H" . vimish-fold)
+         ("C-c h" . vimish-fold-delete))
+  :ensure t)
+
+(use-package diminish                                                                                                  
+  :defer t
+  :ensure t)
+
+(use-package auto-complete
+  :diminish
+  :config
+  (progn
+    (setq ac-modes '(cc-mode c-mode c++-mode))
+    (ac-config-default)
+    (setq ac-delay 0.8))
+  :ensure t)
+
+(use-package rainbow-delimiters
+  :defer t
+  :ensure t)
+
 (use-package eshell
   :config
   (setq eshell-prompt-function                                                                      
