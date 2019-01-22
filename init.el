@@ -1,11 +1,17 @@
 ;;; Example File
 
+(defun disable-tabs () (setq indent-tabs-mode nil))
+(add-hook 'lisp-mode-hook 'disable-tabs)
+(add-hook 'emacs-lisp-mode-hook 'disable-tabs)
+
+
 (bind-keys :map global-map
            :prefix-map zz:idev-prefix
            :prefix "C-l")
 
-(require 'bind-key)
-(require 'dired-x)
+(eval-when-compile
+ (require 'bind-key)
+ (require 'dired-x))
 
 (global-unset-key (kbd "<f1>"))
 (global-unset-key (kbd "<f2>"))
@@ -62,10 +68,6 @@
       )
     (engine-mode 1))
   :ensure t)
-
-
-
-
 
 
 (use-package hi-lock
@@ -270,8 +272,10 @@
   (progn
     (setq tab-always-indent 'complete)
     (add-to-list 'completion-styles 'initials t)
+    (add-hook 'list-mode-hook 'disable-tabs)
     (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
     (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+    (add-hook 'emacs-lisp-mode-hook 'disable-tabs)
     (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
     (bind-key "M-." 'find-function-at-point)))
 
