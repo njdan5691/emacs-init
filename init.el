@@ -1,5 +1,42 @@
 ;;; Example File
 
+(use-package smex
+  :defer t
+  :ensure t
+  :after ivy
+  :commands smex-initialize
+  :config
+  (smex-initialize))
+
+(use-package ctable
+  :defer t
+  :ensure t)
+
+(use-package aggressive-indent
+  :ensure t
+  :defer t
+  :commands aggressive-indent-mode
+  :diminish aggressive-indent-mode
+  :config
+  (aggressive-indent-mode t))                                                                       
+
+(use-package ggtags
+  :diminish ggtags-mode
+  :config
+  (progn
+    (setq ggtags-use-sqlite3 1)
+    (setq-local imenu-create-index-function #'ggtags-build-imenu-index)
+    (add-hook 'c-mode-common-hook
+              (lambda ()
+                (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+                  (ggtags-mode 1)))))
+  :ensure t)
+
+(use-package counsel-gtags
+  :defer t
+  :ensure t)
+
+
 (use-package swiper
   :defer t
   :config
