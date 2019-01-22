@@ -10,6 +10,8 @@
   (package-install 'use-package))
 
 (package-initialize)
+(defun package--save-selected-packages (&rest opt) nil)
+
 
 (eval-when-compile
   (require 'use-package))
