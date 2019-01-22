@@ -1,8 +1,5 @@
 ;;; Example File
 
-(defun disable-tabs () (setq indent-tabs-mode nil))
-(add-hook 'lisp-mode-hook 'disable-tabs)
-(add-hook 'emacs-lisp-mode-hook 'disable-tabs)
 
 
 (bind-keys :map global-map
@@ -276,13 +273,14 @@
 (use-package lisp-mode
   :defer t
   :config
+  (defun zz:disable-tabs () (setq indent-tabs-mode nil))
   (progn
     (setq tab-always-indent 'complete)
     (add-to-list 'completion-styles 'initials t)
-    (add-hook 'list-mode-hook 'disable-tabs)
+    (add-hook 'list-mode-hook 'zz:disable-tabs)
     (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
     (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
-    (add-hook 'emacs-lisp-mode-hook 'disable-tabs)
+    (add-hook 'emacs-lisp-mode-hook 'zz:disable-tabs)
     (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
     (bind-key "M-." 'find-function-at-point)))
 
