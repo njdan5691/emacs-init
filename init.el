@@ -34,7 +34,8 @@ If the input is non-empty, it is inserted at point."
   :config
   (setq yankpad-file (expand-file-name "~/.emacs.d/yankpad.org"))
   :ensure t)
-use-package dired-x
+
+(use-package dired-x
   :bind (("C-l C-o" . dired-omit-mode))
   :bind (("C-c D" . find-name-dired))
   :bind (("C-c o" . zz:dired-open-file))
@@ -53,8 +54,6 @@ use-package dired-x
     ;; hide backup, autosave, *.*~ files                                                            
     ;; omit mode can be toggled using `M-o' in dired buffer                                         
     (add-hook 'dired-mode-hook #'dired-omit-mode)))
-
-
 
 (use-package files
   :bind (("C-l C-k" . elispm:kill-other-buffers))
