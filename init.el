@@ -1,5 +1,23 @@
 ;;; Example File
 
+(require 'package)                                                                                  
+(setq package-enable-at-startup nil)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize 'noactivate)
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(package-initialize)
+
+(eval-when-compile
+  (require 'use-package))
+
+
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load-file custom-file)
+
 
 
 (bind-keys :map global-map
