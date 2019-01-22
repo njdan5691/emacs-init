@@ -1,5 +1,54 @@
 ;;; Example File
 
+(use-package compile
+  :config
+  (setq nmake-command "nmake"))
+
+;; Save minibuffer histories
+(use-package savehist
+  :config
+  (savehist-mode))
+
+;; displays the key bindings following your currently entered incomplete command
+(use-package which-key
+  :init
+  (setq which-key-side-window-max-height 0.40)
+  (which-key-mode)
+  :ensure t)
+
+(use-package saveplace
+  :init
+  (setq save-place-file (expand-file-name "places" user-emacs-directory))
+  (save-place-mode))
+
+(use-package recentf
+  :config
+  (progn
+    (setq recentf-exclude '("^/var/folders\.*"
+                            "COMMIT_EDITMSG\'"
+                            ".*-autoloads\.el\'"
+                            "[/\]\elpa/"))
+    (setq recentf-save-file (expand-file-name "recentf" user-emacs-directory)
+          recentf-max-saved-items 15)))
+
+(use-package grep                                                                                                                     
+  :config
+  (setq grep-use-null-device nil)
+  (grep-apply-setting 'grep-command '("ag --depth 0 --vimgrep " . 24)))
+
+(use-package cperl-mode
+  :config (progn
+            (setq cperl-indent-level 2)
+            (defalias 'perl-mode 'cperl-mode))
+  :init
+  :mode "\\.\\(cgi\\|psgi\\|t\\|pl\\)$")
+
+(use-package yankpad
+  :config
+  (setq yankpad-file (expand-file-name "~/.emacs.d/yankpad.org"))
+  :ensure t)
+
+
 (use-package cc-mode
   :config
   (defun my-c-mode-hook ()
