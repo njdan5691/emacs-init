@@ -10,6 +10,7 @@
            :prefix "C-l")
 
 (eval-when-compile
+ (require 'use-package)
  (require 'bind-key)
  (require 'dired-x))
 
