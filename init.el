@@ -12,9 +12,9 @@
 (package-initialize)
 (defun package--save-selected-packages (&rest opt) nil)
 
-
-(eval-when-compile
-  (require 'use-package))
+(require 'use-package)
+(require 'bind-key)
+(require 'dired-x)
 
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
@@ -25,11 +25,6 @@
 (bind-keys :map global-map
            :prefix-map zz:idev-prefix
            :prefix "C-l")
-
-(eval-when-compile
- (require 'use-package)
- (require 'bind-key)
- (require 'dired-x))
 
 (global-unset-key (kbd "<f1>"))
 (global-unset-key (kbd "<f2>"))
