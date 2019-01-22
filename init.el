@@ -1,5 +1,48 @@
 ;;; Example File
 
+(use-package swiper
+  :defer t
+  :config
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d/%d) ")
+
+  ;; This lets you start out in isearch and drop into swiper
+  ;; :bind (:map isearch-mode-map
+  ;;            ("M-i" . swiper-from-isearch)) ; isearch > swiper
+
+  :bind (
+         ;([remap isearch-forward] . swiper)
+         ;([remap isearch-backward] . swiper)
+         ("C-s" . swiper)
+         ("C-r" . swiper)
+         ("C-x C-f" . counsel-find-file)
+         ("M-i" . counsel-imenu)
+         ("M-x" . counsel-M-x)
+         ))
+
+
+(use-package ivy
+  :defer t
+  :bind (("C-x b" . ivy-switch-buffer)
+         ("C-x j" . ivy-kill-line)
+         ("C-h v" . counsel-describe-variable)
+         ("C-h s" . counsel-set-variable)
+         ("C-h f" . counsel-describe-function))
+  :config
+  (setq ivy-use-virtual-buffers t)
+  :ensure t)                                                                                        
+
+(use-package lisp-mode
+  :defer t
+  :config
+  (progn
+    (setq tab-always-indent 'complete)
+    (add-to-list 'completion-styles 'initials t)
+    (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
+    (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+    (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
+    (bind-key "M-." 'find-function-at-point)))
+
 (use-package recentf-ext
   :ensure t)
 
