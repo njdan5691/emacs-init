@@ -45,8 +45,8 @@
 (defun package--save-selected-packages (&rest opt) nil)
 
 ;;(require 'use-package)
-(require 'bind-key)
-(require 'dired-x)
+;;(require 'bind-key)
+;;(require 'dired-x)
 
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
