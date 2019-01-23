@@ -469,6 +469,7 @@ If the input is non-empty, it is inserted at point."
   (message "Initialization Completed"))
 
 (global-hl-line-mode 1)
+(set-face-background 'hl-line "darkgreen")
 (put 'downcase-region 'disabled nil)
 
 
