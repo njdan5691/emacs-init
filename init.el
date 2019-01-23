@@ -462,3 +462,13 @@ If the input is non-empty, it is inserted at point."
           kept-old-versions 0
           version-control t)))
 
+;; (el-get-bundle pheaver/breadcrumb)
+;; (el-get-bundle dmgerman/org-manage)
+
+(defun display-startup-echo-area-message ()
+  (message "Initialization Completed"))
+
+(global-hl-line-mode 1)
+(put 'downcase-region 'disabled nil)
+
+
