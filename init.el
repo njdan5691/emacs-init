@@ -44,7 +44,7 @@
 (package-initialize)
 (defun package--save-selected-packages (&rest opt) nil)
 
-(require 'use-package)
+;;(require 'use-package)
 (require 'bind-key)
 (require 'dired-x)
 
