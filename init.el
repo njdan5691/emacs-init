@@ -1,5 +1,37 @@
 ;;; Example File
 
+
+(setq-default
+ tab-width 2
+ indent-tabs-mode t
+ user-emacs-directory (expand-file-name "~/.emacs.d")
+ c-default-style "linux"
+ sh-indentation 2
+ sh-basic-offset 2
+ julia-indent-offset 2
+ js-indent-level 2
+ c-basic-offset 2)
+
+(setq
+ dired-listing-switches "-alGhvF --group-directories-first"
+ nmake-command "nmake"
+ inhibit-splash-screen t
+ initial-scratch-message nil
+ enable-local-variables :all
+ counsel-grep-base-command "ag --nocolor %s %s"
+ compilation-last-buffer nil
+ compilation-skip-threshold 2
+ save-interprogram-paste-before-kill t
+ blink-cursor-mode -1
+ ring-bell-function 'ignore
+ history-length 2000
+ history-delete-duplicates t
+ enable-recursive-minibuffers t                                                                      
+ backward-delete-char-untabify-method 'hungry
+ electric-indent-mode nil
+ create-lockfiles nil
+ apropos-do-all t)
+
 (require 'package)                                                                                  
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
