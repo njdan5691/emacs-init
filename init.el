@@ -424,6 +424,13 @@ If the input is non-empty, it is inserted at point."
 
   (global-set-key "\C-xQ" 'zz:macro-query))
 
+(use-package hl-line
+  :ensure nil
+  :config
+  (set-face-background 'hl-line "darkgreen")
+  :hook (after-init . global-hl-line-mode))
+
+
 (use-package yankpad
   :config
   (setq yankpad-file (expand-file-name "~/.emacs.d/yankpad.org"))
@@ -468,8 +475,7 @@ If the input is non-empty, it is inserted at point."
 (defun display-startup-echo-area-message ()
   (message "Initialization Completed"))
 
-(global-hl-line-mode 1)
-(set-face-background 'hl-line "darkgreen")
+
 (put 'downcase-region 'disabled nil)
 
 
