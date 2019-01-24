@@ -13,7 +13,6 @@
  c-basic-offset 2)
 
 (setq
- dired-listing-switches "-alGhvF --group-directories-first"
  nmake-command "nmake"
  inhibit-splash-screen t
  initial-scratch-message nil
@@ -145,7 +144,13 @@
   (which-key-mode)
   :ensure t)
 
+(use-package dired                                                                                  
+  :ensure nil
+  :config
+  (setq dired-listing-switches "-alGhvF --group-directories-first"))
+
 (use-package saveplace
+  :ensure nil
   :init
   (setq save-place-file (expand-file-name "places" user-emacs-directory))
   (save-place-mode))
