@@ -54,11 +54,9 @@
 (defun package--save-selected-packages (&rest opt) nil)
 
 (eval-when-compile
-  (require 'use-package))
-(require 'diminish)
-(require 'bind-key)
-
-
+  (require 'use-package)
+  (require 'diminish)
+  (require 'bind-key))
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load-file custom-file)
