@@ -12,7 +12,6 @@
  c-basic-offset 2)
 
 (setq
- nmake-command "nmake"
  inhibit-splash-screen t
  initial-scratch-message nil
  enable-local-variables :all
@@ -43,7 +42,8 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(use-package diminish
+(use-package diminish                                                                                                  
+  :defer t
   :ensure t)
 
 (use-package el-get
@@ -59,7 +59,6 @@
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load-file custom-file)
-
 
 
 (bind-keys :map global-map
@@ -110,30 +109,22 @@
     (defengine google
       "https://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"
       :keybinding "g"
-      :browser 'eww-browse-url
-      )
+      :browser 'eww-browse-url)
     (defengine gist-github
       "https://gist.github.com/search?utf=1&&q=%s"
       :keybinding "G"
-      :browser 'eww-browse-url                                                                     
-      )
+      :browser 'eww-browse-url)
     (defengine dicionary
-      "https://www.wikipedia.org/search-redirect.php?family=wiktionary&language=en&go=Go&search=%s\
-"
+      "https://www.wikipedia.org/search-redirect.php?family=wiktionary&language=en&go=Go&search=%s"
       :keybinding "d"
-      :browser 'eww-browse-url
-      )
+      :browser 'eww-browse-url)
     (engine-mode 1))
   :ensure t)
-
 
 (use-package hi-lock
   :bind (("M-o l" . highlight-lines-matching-regexp)
          ("M-o r" . highlight-regexp)
          ("M-o w" . highlight-phrase)))
-
-
-
 
 (use-package compile
   :config
@@ -188,7 +179,6 @@
   :config
   (setq yankpad-file (expand-file-name "~/.emacs.d/yankpad.org"))
   :ensure t)
-
 
 (use-package cc-mode
   :config
@@ -269,9 +259,9 @@
   :config
   (smex-initialize))
 
-(use-package ctable
-  :defer t
-  :ensure t)
+;;(use-package ctable
+;;  :defer t
+;;  :ensure t)
 
 (use-package aggressive-indent
   :ensure t
@@ -354,8 +344,9 @@
   :config
   (add-hook 'text-mode-hook #'flyspell-mode))
 
-(use-package ibuffer-mode
-  :bind ("C-x C-b" . ibuffer))
+;; Never use this, comment it out for future removal
+;;(use-package ibuffer-mode
+;;  :bind ("C-x C-b" . ibuffer))
 
 (use-package shell
   :config
@@ -364,9 +355,10 @@
   (add-hook 'comint-mode-hook 'zz:comint-init))
 
 (use-package makefile
+  :ensure nil
   :mode (("\\.nmk\\'" . makefile-gmake-mode)))
 
-(use-package  counsel
+(use-package counsel
   :defer t
   :bind (("C-s" . counsel-grep-or-swiper)
          ("C-x C-r" . counsel-recentf))
@@ -393,9 +385,6 @@
          ("C-c h" . vimish-fold-delete))
   :ensure t)
 
-(use-package diminish                                                                                                  
-  :defer t
-  :ensure t)
 
 (use-package auto-complete
   :diminish
@@ -410,11 +399,11 @@
   :defer t
   :ensure t)
 
-(use-package eshell
-  :config
-  (setq eshell-prompt-function                                                                      
-        (lambda nil " $ "))
-  (setenv "PAGER" "cat"))
+;;(use-package eshell
+;;  :config
+;;  (setq eshell-prompt-function                                                                      
+;;        (lambda nil " $ "))
+;;  (setenv "PAGER" "cat"))
 
 ;; (use-package csv-mode                                                                               
 ;;   :mode "\\.csv\\'"
@@ -443,7 +432,6 @@ If the input is non-empty, it is inserted at point."
   :config
   (set-face-background 'hl-line "darkgreen")
   :hook (after-init . global-hl-line-mode))
-
 
 (use-package yankpad
   :config
