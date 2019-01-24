@@ -16,7 +16,6 @@
  inhibit-splash-screen t
  initial-scratch-message nil
  enable-local-variables :all
- counsel-grep-base-command "ag --nocolor %s %s"
  compilation-last-buffer nil
  compilation-skip-threshold 2
  save-interprogram-paste-before-kill t
@@ -287,6 +286,7 @@
   :ensure t
   :config
   (setq ivy-use-virtual-buffers t)
+  (setq  counsel-grep-base-command "ag --nocolor %s %s")
   (setq ivy-count-format "(%d/%d) ")
 
   ;; This lets you start out in isearch and drop into swiper
