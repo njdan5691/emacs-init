@@ -33,7 +33,17 @@
 
 (require 'package)                                                                                  
 (setq package-enable-at-startup nil)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+
+(setq package-archives
+      '(("elpa"     . "https://elpa.gnu.org/packages/")
+        ("melpa-stable" . "https://stable.melpa.org/packages/")
+        ("melpa"        . "https://melpa.org/packages/"))
+      package-archive-priorities
+      '(("melpa-stable" . 10)
+        ("elpa"     . 5)
+        ("melpa"        . 0)))
+
+;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 ;;(package-initialize 'noactivate)
 (package-initialize)
 
