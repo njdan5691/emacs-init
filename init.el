@@ -34,18 +34,20 @@
 (require 'package)                                                                                  
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(package-initialize 'noactivate)
+;;(package-initialize 'noactivate)
+(package-initialize)
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
 
-(package-initialize)
 (defun package--save-selected-packages (&rest opt) nil)
 
-;;(require 'use-package)
-;;(require 'bind-key)
-;;(require 'dired-x)
+(eval-when-compile
+  (require 'use-package))
+(require 'diminish)
+(require 'bind-key)
+
 
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
