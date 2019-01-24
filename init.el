@@ -62,9 +62,10 @@
 (global-unset-key (kbd "<f3>"))
 (global-unset-key (kbd "<f11>"))
 (global-unset-key (kbd "<f10>"))
+(global-unset-key (kbd "C-z"))
 
 (bind-keys :map global-map
-           ("C-z" . save-buffers-kill-emacs)
+           ;;("C-z" . save-buffers-kill-emacs)
            ("C-x k" . kill-this-buffer)
            ("<f1>" . menu-bar-open)
            ("M-1" . menu-bar-open)
