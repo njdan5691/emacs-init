@@ -51,6 +51,9 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(use-package diminish
+  :ensure t)
+
 (defun package--save-selected-packages (&rest opt) nil)
 
 (eval-when-compile
