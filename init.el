@@ -5,7 +5,6 @@
  tab-width 2
  indent-tabs-mode t
  user-emacs-directory (expand-file-name "~/.emacs.d")
- c-default-style "linux"
  sh-indentation 2
  sh-basic-offset 2
  julia-indent-offset 2
@@ -197,6 +196,7 @@
   (defun my-c-mode-hook ()
     (global-hl-line-mode -1)
     (setq-local eldoc-echo-area-use-multiline-p t)
+    (setq c-default-style "linux")
     (bind-keys :map global-map
                :prefix-map zz:ggtags-prefix
                :prefix "C-c g")
