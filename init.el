@@ -54,6 +54,10 @@
 (use-package diminish
   :ensure t)
 
+(use-package el-get
+  :defer t
+  :ensure t)
+
 (defun package--save-selected-packages (&rest opt) nil)
 
 (eval-when-compile
@@ -102,9 +106,6 @@
            ("C-c a" . apropos-command)
            ("C-x C-o" . find-file))
 
-(use-package el-get
-  :defer t
-  :ensure t)
 
 (el-get-bundle njdan5691/elisp-misc)                                                               
 
