@@ -20,7 +20,6 @@
  save-interprogram-paste-before-kill t
  blink-cursor-mode -1
  ring-bell-function 'ignore
- history-length 2000
  history-delete-duplicates t
  enable-recursive-minibuffers t                                                                      
  backward-delete-char-untabify-method 'hungry
@@ -125,6 +124,10 @@
   :bind (("M-o l" . highlight-lines-matching-regexp)
          ("M-o r" . highlight-regexp)
          ("M-o w" . highlight-phrase)))
+
+(use-package minibuffer
+  :config
+  (setq history-length 2300))
 
 (use-package compile
   :config
