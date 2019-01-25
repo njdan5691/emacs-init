@@ -1,5 +1,15 @@
 ;;; Example File
 
+(if (eq window-system 'x)
+    (progn
+      (tool-bar-mode -1)
+      (scroll-bar-mode -1)
+      (set-background-color "black")
+      (set-foreground-color "white")
+      ;;(set-default-font "Consolas-20")
+      ;;(set-face-attribute 'default t :font "Consolas-20")
+      (set-face-attribute 'default t :font "Office Code Pro-26")))
+
 ;; If the variable is a buffer-local, and you want it the
 ;; same in all types of buffers add it here.
 (setq-default
