@@ -223,10 +223,10 @@
             (message (concat "No snippet named " name))))))
 
     (bind-keys :map c-mode-base-map
-               ;;("C-l TAB" . elispm:reformat-buffer)
-               ;;("C-l z" . zz:indent-with-gnu-indent)
-               ;;("C-l x" . c-mark-function)
-               ;;("C-l c" . compile)
+               ("C-c TAB" . elispm:reformat-buffer)
+               ("C-c z" . zz:indent-with-gnu-indent)
+               ("C-c x" . c-mark-function)
+               ("C-c c" . compile)
                ("C-c t" . elispm:toggle-tab-width)
                ("C-c g d" . ggtags-find-definition)                                                                                   
                ("C-c g o" . ggtags-find-other-symbol)
@@ -463,7 +463,7 @@ If the input is non-empty, it is inserted at point."
   :ensure t)
 
 (use-package dired-x
-  ;;:bind (("C-l C-o" . dired-omit-mode))
+  :bind (("C-c C-o" . dired-omit-mode))
   :bind (("C-c D" . find-name-dired))
   :bind (("C-c o" . zz:dired-open-file))
   :commands (dired-dwim-target-directory)
@@ -483,7 +483,7 @@ If the input is non-empty, it is inserted at point."
     (add-hook 'dired-mode-hook #'dired-omit-mode)))
 
 (use-package files
-  ;;:bind (("C-l C-k" . elispm:kill-other-buffers))
+  :bind (("C-c C-k" . elispm:kill-other-buffers))
   :config
   (progn
     (setq require-final-newline t
