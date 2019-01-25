@@ -129,6 +129,10 @@
         enable-recursive-minibuffers t
         history-delete-duplicates t))
 
+(use-package simple
+  :config
+  (add-hook 'before-save-hook 'delete-trailing-whitespace))
+
 (use-package compile
   :config
   (setq nmake-command "nmake"))
@@ -400,7 +404,11 @@
 
 (use-package rainbow-delimiters
   :defer t
-  :ensure t)
+  :ensure t
+  :hook prog-mode-hook
+  :config
+   (setq show-paren-mode 1
+         electric-pair-mode 1))
 
 ;;(use-package eshell
 ;;  :config
