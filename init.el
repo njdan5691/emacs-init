@@ -223,10 +223,10 @@
             (message (concat "No snippet named " name))))))
 
     (bind-keys :map c-mode-base-map
-               ("C-l TAB" . elispm:reformat-buffer)
-               ("C-l z" . zz:indent-with-gnu-indent)
-               ("C-l x" . c-mark-function)
-               ("C-l c" . compile)
+               ;;("C-l TAB" . elispm:reformat-buffer)
+               ;;("C-l z" . zz:indent-with-gnu-indent)
+               ;;("C-l x" . c-mark-function)
+               ;;("C-l c" . compile)
                ("C-c t" . elispm:toggle-tab-width)
                ("C-c g d" . ggtags-find-definition)                                                                                   
                ("C-c g o" . ggtags-find-other-symbol)
@@ -392,13 +392,13 @@
 ;;  (progn
 ;;    (setq org-startup-truncated nil)))
 
-(bind-keys :map global-map
-           :prefix-map my-prefix-map-l
-           :prefix "C-l"
-           ("s" . isearch-forward)
-           ("r" . isearch-backward)
-           ("l" . load-file)
-           ("C-l" . recenter))
+;;(bind-keys :map global-map
+;;           :prefix-map my-prefix-map-l
+;;           :prefix "C-l"
+;;           ("s" . isearch-forward)
+;;           ("r" . isearch-backward)
+;;           ("l" . load-file)
+;;           ("C-l" . recenter))
 
 (use-package vimish-fold
   :bind (("C-c H" . vimish-fold)
@@ -463,7 +463,7 @@ If the input is non-empty, it is inserted at point."
   :ensure t)
 
 (use-package dired-x
-  :bind (("C-l C-o" . dired-omit-mode))
+  ;;:bind (("C-l C-o" . dired-omit-mode))
   :bind (("C-c D" . find-name-dired))
   :bind (("C-c o" . zz:dired-open-file))
   :commands (dired-dwim-target-directory)
