@@ -27,6 +27,7 @@
 ;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 ;;(package-initialize 'noactivate)
 (package-initialize)
+(defun package--save-selected-packages (&rest opt) nil)
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -39,8 +40,6 @@
 (use-package el-get
   :defer t
   :ensure t)
-
-(defun package--save-selected-packages (&rest opt) nil)
 
 (eval-when-compile
   (require 'use-package)
