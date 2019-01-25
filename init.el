@@ -120,7 +120,7 @@
   :ensure nil
   :defer
   :config
-  (setq sh-indentation 2                                                                                                         
+  (setq sh-indentation 2
         sh-basic-offset 2))
 
 (use-package minibuffer
