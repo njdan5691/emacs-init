@@ -483,7 +483,7 @@ If the input is non-empty, it is inserted at point."
     (add-hook 'dired-mode-hook #'dired-omit-mode)))
 
 (use-package files
-  :bind (("C-l C-k" . elispm:kill-other-buffers))
+  ;;:bind (("C-l C-k" . elispm:kill-other-buffers))
   :config
   (progn
     (setq require-final-newline t
