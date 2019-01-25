@@ -10,8 +10,6 @@
  inhibit-splash-screen t
  initial-scratch-message nil
  enable-local-variables :all
- compilation-last-buffer nil
- compilation-skip-threshold 2
  save-interprogram-paste-before-kill t
  blink-cursor-mode -1
  ring-bell-function 'ignore                                                                     
@@ -137,7 +135,9 @@
 
 (use-package compile
   :config
-  (setq nmake-command "nmake"))
+  (setq nmake-command "nmake"
+        compilation-last-buffer nil
+        compilation-skip-threshold 2))
 
 ;; Save minibuffer histories
 (use-package savehist
