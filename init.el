@@ -19,9 +19,7 @@
  compilation-skip-threshold 2
  save-interprogram-paste-before-kill t
  blink-cursor-mode -1
- ring-bell-function 'ignore
- history-delete-duplicates t
- enable-recursive-minibuffers t                                                                      
+ ring-bell-function 'ignore                                                                     
  backward-delete-char-untabify-method 'hungry
  electric-indent-mode nil
  create-lockfiles nil
@@ -127,7 +125,9 @@
 
 (use-package minibuffer
   :config
-  (setq history-length 2300))
+  (setq history-length 2300
+        enable-recursive-minibuffers t
+        history-delete-duplicates t))
 
 (use-package compile
   :config
