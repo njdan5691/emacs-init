@@ -4,12 +4,7 @@
 (setq-default
  tab-width 2
  indent-tabs-mode t
- user-emacs-directory (expand-file-name "~/.emacs.d")
- sh-indentation 2
- sh-basic-offset 2
- julia-indent-offset 2
- js-indent-level 2
- c-basic-offset 2)
+ user-emacs-directory (expand-file-name "~/.emacs.d"))
 
 (setq
  inhibit-splash-screen t
@@ -123,6 +118,13 @@
          ("M-o r" . highlight-regexp)
          ("M-o w" . highlight-phrase)))
 
+(use-package sh-script
+  :ensure nil
+  :defer
+  :config
+  (setq sh-indentation 2                                                                                                         
+        sh-basic-offset 2))
+
 (use-package minibuffer
   :config
   (setq history-length 2300
@@ -192,7 +194,8 @@
   (defun my-c-mode-hook ()
     (global-hl-line-mode -1)
     (setq-local eldoc-echo-area-use-multiline-p t)
-    (setq c-default-style "linux")
+    (setq c-default-style "linux"
+          c-basic-offset 2)
     (bind-keys :map global-map
                :prefix-map zz:ggtags-prefix
                :prefix "C-c g")
