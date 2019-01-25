@@ -1,20 +1,20 @@
 ;;; Example File
 
-
+;; If the variable is a buffer-local, and you want it the
+;; same in all types of buffers add it here.
 (setq-default
  tab-width 2
- indent-tabs-mode t
- user-emacs-directory (expand-file-name "~/.emacs.d"))
+ indent-tabs-mode t)
 
 (setq
  inhibit-splash-screen t
  initial-scratch-message nil
  enable-local-variables :all
+ user-emacs-directory (expand-file-name "~/.emacs.d")
  save-interprogram-paste-before-kill t
  blink-cursor-mode -1
  ring-bell-function 'ignore                                                                     
  backward-delete-char-untabify-method 'hungry
- electric-indent-mode nil
  create-lockfiles nil
  apropos-do-all t)
 
@@ -250,6 +250,7 @@
     (transient-mark-mode 1))
   (add-hook 'c-mode-common-hook #'rainbow-delimiters-mode)
   (add-hook 'c-mode-common-hook #'aggressive-indent-mode)
+  (add-hook 'c-mode-common-hook #'electric-indent-mode)
   (add-hook 'c-mode-common-hook #'elispm:my-auto-complete-disabling-hook)
   (add-hook 'c-mode-common-hook #'my-c-mode-hook))
 
