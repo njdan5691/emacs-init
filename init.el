@@ -51,6 +51,10 @@
   :defer t
   :ensure t)
 
+(use-package quelpa-use-package
+  :defer t
+  :ensure t)
+
 (eval-when-compile
   (require 'use-package)
   (require 'diminish)
