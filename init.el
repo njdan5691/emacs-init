@@ -51,9 +51,9 @@
   :defer t
   :ensure t)
 
-(use-package el-get
-  :defer t
-  :ensure t)
+;;(use-package el-get
+;;  :defer t
+;;  :ensure t)
 
 (use-package quelpa-use-package
   :defer t
@@ -110,7 +110,7 @@
 
 ;;(el-get-bundle njdan5691/elisp-misc)     
 (use-package elisp-misc
-  :ensure t                                                                                         
+  :ensure t
   :quelpa (elisp-misc :fetcher github :repo "njdan5691/elisp-misc"))
 
 (use-package engine-mode
