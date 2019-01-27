@@ -53,7 +53,9 @@
 
 (use-package quelpa-use-package
   :defer t
-  :ensure t)
+  :ensure t
+  :config
+    (setq quelpa-update-melpa-p nil))
 
 (eval-when-compile
   (require 'use-package)
