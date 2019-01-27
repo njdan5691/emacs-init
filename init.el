@@ -28,6 +28,9 @@
  create-lockfiles nil
  apropos-do-all t)
 
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load-file custom-file)
+
 (require 'package)                                                                                  
 (setq package-enable-at-startup nil)
 
@@ -63,9 +66,6 @@
   (require 'diminish)
   (require 'bind-key))
 
-
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load-file custom-file)
 
 
 (bind-keys :map global-map
