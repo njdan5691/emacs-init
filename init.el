@@ -55,6 +55,7 @@
   :defer t
   :ensure t
   :config
+    (setq quelpa-checkout-melpa-p nil)
     (setq quelpa-update-melpa-p nil))
 
 (eval-when-compile
