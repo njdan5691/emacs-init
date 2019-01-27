@@ -61,6 +61,7 @@
   :init
     (setq quelpa-checkout-melpa-p nil)
     (setq quelpa-update-melpa-p nil))
+(require 'quelpa-use-package)
 
 (eval-when-compile
   (require 'use-package)
@@ -107,7 +108,10 @@
            ("C-x C-o" . find-file))
 
 
-(el-get-bundle njdan5691/elisp-misc)                                                               
+;;(el-get-bundle njdan5691/elisp-misc)     
+(use-package elisp-misc
+  :ensure t                                                                                         
+  :quelpa (elisp-misc :fetcher github :repo "njdan5691/elisp-misc"))
 
 (use-package engine-mode
   ;; default keymap is bound to "C-x /"
