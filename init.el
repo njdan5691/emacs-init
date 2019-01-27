@@ -134,10 +134,11 @@
     (engine-mode 1))
   :ensure t)
 
-(use-package hi-lock
-  :bind (("M-o l" . highlight-lines-matching-regexp)
-         ("M-o r" . highlight-regexp)
-         ("M-o w" . highlight-phrase)))
+;; select text to be hightlighted on the screen
+;; (use-package hi-lock
+;;   :bind (("M-o l" . highlight-lines-matching-regexp)
+;;          ("M-o r" . highlight-regexp)
+;;         ("M-o w" . highlight-phrase)))
 
 (use-package sh-script
   :ensure nil
@@ -200,17 +201,17 @@
   (setq grep-use-null-device nil)
   (grep-apply-setting 'grep-command '("ag --depth 0 --vimgrep " . 24)))
 
-(use-package cperl-mode
-  :config (progn
-            (setq cperl-indent-level 2)
-            (defalias 'perl-mode 'cperl-mode))
-  :init
-  :mode "\\.\\(cgi\\|psgi\\|t\\|pl\\)$")
+;; (use-package cperl-mode
+;;   :config (progn
+;;             (setq cperl-indent-level 2)
+;;             (defalias 'perl-mode 'cperl-mode))
+;;   :init
+;;   :mode "\\.\\(cgi\\|psgi\\|t\\|pl\\)$")
 
-(use-package yankpad
-  :config
-  (setq yankpad-file (expand-file-name "~/.emacs.d/yankpad.org"))
-  :ensure t)
+;; (use-package yankpad
+;;   :config
+;;   (setq yankpad-file (expand-file-name "~/.emacs.d/yankpad.org"))
+;;   :ensure t)
 
 (use-package cc-mode
   :config
@@ -414,10 +415,10 @@
 ;;           ("l" . load-file)
 ;;           ("C-l" . recenter))
 
-(use-package vimish-fold
-  :bind (("C-c H" . vimish-fold)
-         ("C-c h" . vimish-fold-delete))
-  :ensure t)
+;; (use-package vimish-fold
+;;   :bind (("C-c H" . vimish-fold)
+;;          ("C-c h" . vimish-fold-delete))
+;;   :ensure t)
 
 
 (use-package auto-complete
