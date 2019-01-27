@@ -108,6 +108,10 @@
            ("C-x C-o" . find-file))
 
 
+;; If these are needed, use (use-package :quelpa to enable
+;; (el-get-bundle pheaver/breadcrumb)
+;; (el-get-bundle dmgerman/org-manage)
+
 ;;(el-get-bundle njdan5691/elisp-misc)     
 (use-package elisp-misc
   :ensure t
@@ -510,15 +514,12 @@ If the input is non-empty, it is inserted at point."
           kept-old-versions 0
           version-control t)))
 
-;; (el-get-bundle pheaver/breadcrumb)
-;; (el-get-bundle dmgerman/org-manage)
-
-(defun display-startup-echo-area-message ()
-  (message "Initialization Completed"))
-
 
 ;; This enables the downcase-region command, which is disabled
 ;; by default.
 (put 'downcase-region 'disabled nil)
+
+(defun display-startup-echo-area-message ()
+  (message "Initialization Completed"))
 
 
