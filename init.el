@@ -103,6 +103,7 @@
            ("C-c q" . query-replace)
            ("C-c Q" . query-replace-regexp)
            ("C-c a" . apropos-command)
+           ("C-c l" . load-file)
            ("C-x C-o" . find-file))
 
 
