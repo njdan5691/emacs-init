@@ -517,6 +517,8 @@ If the input is non-empty, it is inserted at point."
   (message "Initialization Completed"))
 
 
+;; This enables the downcase-region command, which is disabled
+;; by default.
 (put 'downcase-region 'disabled nil)
 
 
