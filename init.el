@@ -54,7 +54,7 @@
 (use-package quelpa-use-package
   :defer t
   :ensure t
-  :config
+  :init
     (setq quelpa-checkout-melpa-p nil)
     (setq quelpa-update-melpa-p nil))
 
@@ -62,6 +62,7 @@
   (require 'use-package)
   (require 'diminish)
   (require 'bind-key))
+
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load-file custom-file)
