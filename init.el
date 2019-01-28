@@ -29,9 +29,6 @@
  create-lockfiles nil
  apropos-do-all t)
 
-;;(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-;;(load-file custom-file)
-
 (require 'package)                                                                                  
 (setq package-enable-at-startup nil)
 
@@ -50,10 +47,6 @@
 (use-package diminish                                                                                                  
   :defer t
   :ensure t)
-
-;;(use-package el-get
-;;  :defer t
-;;  :ensure t)
 
 (use-package quelpa-use-package
   :defer t
@@ -209,6 +202,10 @@
   :config
   (setq grep-use-null-device nil)
   (grep-apply-setting 'grep-command '("ag --depth 0 --vimgrep " . 24)))
+
+;;(use-package el-get
+;;  :defer t
+;;  :ensure t)
 
 ;; Never use this, comment it out for future removal
 ;;(use-package ibuffer-mode
@@ -457,7 +454,6 @@
    (setq show-paren-mode 1
          electric-pair-mode 1))
 
-
 (use-package markdown-mode
   :defer t
   :ensure t)
@@ -491,6 +487,7 @@ If the input is non-empty, it is inserted at point."
   :ensure t)
 
 (use-package dired-x
+  :defer t
   :bind (("C-c C-o" . dired-omit-mode))
   :bind (("C-c D" . find-name-dired))
   :bind (("C-c o" . zz:dired-open-file))
