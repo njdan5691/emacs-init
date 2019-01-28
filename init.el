@@ -68,8 +68,6 @@
   (require 'diminish)
   (require 'bind-key))
 
-
-
 (bind-keys :map global-map
            :prefix-map zz:idev-prefix
            :prefix "C-l")
@@ -105,8 +103,10 @@
            ("C-c Q" . query-replace-regexp)
            ("C-c a" . apropos-command)
            ("C-l l" . load-file)
+           ("C-l C-l" . recenter)
+           ("s" . isearch-forward)
+           ("r" . isearch-backward)
            ("C-x C-o" . find-file))
-
 
 ;; If these are needed, use (use-package :quelpa to enable
 ;; (el-get-bundle pheaver/breadcrumb)
@@ -139,12 +139,6 @@
       :browser 'eww-browse-url)
     (engine-mode 1))
   :ensure t)
-
-;; select text to be hightlighted on the screen
-;; (use-package hi-lock
-;;   :bind (("M-o l" . highlight-lines-matching-regexp)
-;;          ("M-o r" . highlight-regexp)
-;;         ("M-o w" . highlight-phrase)))
 
 (use-package sh-script
   :ensure nil
@@ -205,12 +199,20 @@
     (setq recentf-save-file (expand-file-name "recentf" user-emacs-directory)
           recentf-max-saved-items 15)))
 
+(use-package recentf-ext
+  :defer t
+  :ensure t)
+
 (use-package grep 
   :defer t
   :ensure nil
   :config
   (setq grep-use-null-device nil)
   (grep-apply-setting 'grep-command '("ag --depth 0 --vimgrep " . 24)))
+
+;; Never use this, comment it out for future removal
+;;(use-package ibuffer-mode
+;;  :bind ("C-x C-b" . ibuffer))
 
 ;; (use-package cperl-mode
 ;;   :config (progn
@@ -223,6 +225,38 @@
 ;;   :config
 ;;   (setq yankpad-file (expand-file-name "~/.emacs.d/yankpad.org"))
 ;;   :ensure t)
+
+;; select text to be hightlighted on the screen
+;; (use-package hi-lock
+;;   :bind (("M-o l" . highlight-lines-matching-regexp)
+;;          ("M-o r" . highlight-regexp)
+;;         ("M-o w" . highlight-phrase)))
+
+;;(use-package ctable
+;;  :defer t
+;;  :ensure t)
+
+;; (use-package vimish-fold
+;;   :bind (("C-c H" . vimish-fold)
+;;          ("C-c h" . vimish-fold-delete))
+;;   :ensure t)
+
+;;(use-package eshell
+;;  :config
+;;  (setq eshell-prompt-function                                                                      
+;;        (lambda nil " $ "))
+;;  (setenv "PAGER" "cat"))
+
+;; (use-package csv-mode                                                                               
+;;   :mode "\\.csv\\'"
+;;   :ensure t)
+
+;; (use-package org-mode
+;;  :mode "\\.org$"
+;;  :ensure org
+;;  :init
+;;  (progn
+;;    (setq org-startup-truncated nil)))
 
 (use-package cc-mode
   :defer t
@@ -308,10 +342,6 @@
   :config
   (smex-initialize))
 
-;;(use-package ctable
-;;  :defer t
-;;  :ensure t)
-
 (use-package aggressive-indent
   :ensure t
   :defer t
@@ -342,8 +372,6 @@
          ("M-x" . counsel-M-x)
          ))
 
-
-
 (use-package ggtags
   :defer t
   :diminish ggtags-mode
@@ -361,7 +389,6 @@
   :defer t
   :ensure t
   :requires swiper)
-
 
 (use-package ivy
   :defer t
@@ -387,17 +414,10 @@
     (add-hook 'emacs-lisp-mode-hook 'zz:disable-tabs)
     (bind-key "M-." 'find-function-at-point)))
 
-(use-package recentf-ext
-  :ensure t)
-
 (use-package flyspell
   :defer t
   :config
   (add-hook 'text-mode-hook #'flyspell-mode))
-
-;; Never use this, comment it out for future removal
-;;(use-package ibuffer-mode
-;;  :bind ("C-x C-b" . ibuffer))
 
 (use-package shell
   :defer t
@@ -419,27 +439,6 @@
   :requires swiper
   :ensure t)
 
-;; (use-package org-mode
-;;  :mode "\\.org$"
-;;  :ensure org
-;;  :init
-;;  (progn
-;;    (setq org-startup-truncated nil)))
-
-;;(bind-keys :map global-map
-;;           :prefix-map my-prefix-map-l
-;;           :prefix "C-l"
-;;           ("s" . isearch-forward)
-;;           ("r" . isearch-backward)
-;;           ("l" . load-file)
-;;           ("C-l" . recenter))
-
-;; (use-package vimish-fold
-;;   :bind (("C-c H" . vimish-fold)
-;;          ("C-c h" . vimish-fold-delete))
-;;   :ensure t)
-
-
 (use-package auto-complete
   :defer t
   :diminish
@@ -458,15 +457,6 @@
    (setq show-paren-mode 1
          electric-pair-mode 1))
 
-;;(use-package eshell
-;;  :config
-;;  (setq eshell-prompt-function                                                                      
-;;        (lambda nil " $ "))
-;;  (setenv "PAGER" "cat"))
-
-;; (use-package csv-mode                                                                               
-;;   :mode "\\.csv\\'"
-;;   :ensure t)
 
 (use-package markdown-mode
   :defer t
