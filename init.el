@@ -104,6 +104,7 @@
            ("C-l l" . load-file)
            ("C-l C-s" . isearch-forward)
            ("C-l C-r" . isearch-backward)
+           ("C-l c" . compile)
            ("C-x C-o" . find-file))
 
 ;; If these are needed, use (use-package :quelpa to enable
