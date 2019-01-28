@@ -114,11 +114,13 @@
 
 ;;(el-get-bundle njdan5691/elisp-misc)     
 (use-package elisp-misc
+  :defer t
   :ensure t
   :quelpa (elisp-misc :fetcher github :repo "njdan5691/elisp-misc"))
 
 (use-package engine-mode
   ;; default keymap is bound to "C-x /"
+  :defer t
   :config
   (require 'format-spec)
   (progn
@@ -146,7 +148,7 @@
 
 (use-package sh-script
   :ensure nil
-  :defer
+  :defer t
   :config
   (setq sh-indentation 2
         sh-basic-offset 2))
@@ -162,6 +164,7 @@
   (add-hook 'before-save-hook 'delete-trailing-whitespace))
 
 (use-package compile
+  :defer t
   :config
   (setq nmake-command "nmake"
         compilation-last-buffer nil
@@ -179,7 +182,8 @@
   (which-key-mode)
   :ensure t)
 
-(use-package dired                                                                                  
+(use-package dired 
+  :defer t
   :ensure nil
   :config
   (setq dired-listing-switches "-alGhvF --group-directories-first"))
@@ -191,6 +195,7 @@
   (save-place-mode))
 
 (use-package recentf
+  :defer t
   :config
   (progn
     (setq recentf-exclude '("^/var/folders\.*"
@@ -200,7 +205,9 @@
     (setq recentf-save-file (expand-file-name "recentf" user-emacs-directory)
           recentf-max-saved-items 15)))
 
-(use-package grep                                                                                                                     
+(use-package grep 
+  :defer t
+  :ensure nil
   :config
   (setq grep-use-null-device nil)
   (grep-apply-setting 'grep-command '("ag --depth 0 --vimgrep " . 24)))
@@ -218,6 +225,8 @@
 ;;   :ensure t)
 
 (use-package cc-mode
+  :defer t
+  :ensure nil
   :config
   (defun my-c-mode-hook ()
     (global-hl-line-mode -1)
@@ -284,6 +293,7 @@
 
 
 (use-package easy-kill
+  :defer t
   :init
   (global-set-key [remap kill-ring-save] 'easy-kill)
   (global-set-key [remap mark-paragraph] 'easy-mark)
@@ -335,6 +345,7 @@
 
 
 (use-package ggtags
+  :defer t
   :diminish ggtags-mode
   :config
   (progn
@@ -380,6 +391,7 @@
   :ensure t)
 
 (use-package flyspell
+  :defer t
   :config
   (add-hook 'text-mode-hook #'flyspell-mode))
 
@@ -388,12 +400,15 @@
 ;;  :bind ("C-x C-b" . ibuffer))
 
 (use-package shell
+  :defer t
+  :ensure nil
   :config
   (defun zz:comint-init()                                                                           
     (setq comint-process-echoes t))
   (add-hook 'comint-mode-hook 'zz:comint-init))
 
 (use-package makefile
+  :defer t
   :ensure nil
   :mode (("\\.nmk\\'" . makefile-gmake-mode)))
 
@@ -426,6 +441,7 @@
 
 
 (use-package auto-complete
+  :defer t
   :diminish
   :config
   (progn
@@ -454,9 +470,11 @@
 
 (use-package markdown-mode
   :defer t
-  :ensure)
+  :ensure t)
 
 (use-package kmacro
+  :defer t
+  :ensure nil
   :config
   (defun zz:macro-query (arg)
     "Prompt for input using minibuffer during kbd macro execution.                                 \                                                                                       
@@ -477,6 +495,7 @@ If the input is non-empty, it is inserted at point."
   :hook (after-init . global-hl-line-mode))
 
 (use-package yankpad
+  :defer t
   :config
   (setq yankpad-file (expand-file-name "~/.emacs.d/yankpad.org"))
   :ensure t)
