@@ -61,9 +61,13 @@
   (require 'diminish)
   (require 'bind-key))
 
+;; Since I almost never use C-l to recenter my emacs session,
+;; I repurpose C-l as prefix, so I can bind some of my more frequently
+;; used function. And Bind recenter to C-l C-l.
 (bind-keys :map global-map
            :prefix-map zz:my-prefix
-           :prefix "C-l")
+           :prefix "C-l"
+           ("C-l" . recenter)
 
 (global-unset-key (kbd "<f1>"))
 (global-unset-key (kbd "<f2>"))
@@ -96,7 +100,6 @@
            ("C-c Q" . query-replace-regexp)
            ("C-c a" . apropos-command)
            ("C-l l" . load-file)
-           ("C-l C-l" . recenter)
            ("C-l C-s" . isearch-forward)
            ("C-l C-r" . isearch-backward)
            ("C-x C-o" . find-file))
