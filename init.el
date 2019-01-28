@@ -67,7 +67,7 @@
 (bind-keys :map global-map
            :prefix-map zz:my-prefix
            :prefix "C-l"
-           ("C-l" . recenter)
+           ("C-l" . recenter))
 
 (global-unset-key (kbd "<f1>"))
 (global-unset-key (kbd "<f2>"))
