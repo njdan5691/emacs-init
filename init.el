@@ -62,7 +62,7 @@
   (require 'bind-key))
 
 (bind-keys :map global-map
-           :prefix-map zz:idev-prefix
+           :prefix-map zz:my-prefix
            :prefix "C-l")
 
 (global-unset-key (kbd "<f1>"))
