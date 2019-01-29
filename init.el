@@ -327,7 +327,6 @@
     (c-set-offset 'arglist-intro '+)
     (c-set-offset 'arglist-cont-nonempty '+)
     (transient-mark-mode 1))
-  (add-hook 'c-mode-common-hook #'rainbow-delimiters-mode)
   (add-hook 'c-mode-common-hook #'aggressive-indent-mode)
   (add-hook 'c-mode-common-hook #'electric-indent-mode)
   (add-hook 'c-mode-common-hook #'elispm:my-auto-complete-disabling-hook)
@@ -417,7 +416,6 @@
     (setq tab-always-indent 'complete)
     (add-to-list 'completion-styles 'initials t)
     (add-hook 'list-mode-hook 'zz:disable-tabs)
-    (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
     (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
     (add-hook 'emacs-lisp-mode-hook 'zz:disable-tabs)
     (bind-key "M-." 'find-function-at-point)))
@@ -460,10 +458,10 @@
 (use-package rainbow-delimiters
   :defer t
   :ensure t
-  :hook prog-mode-hook
+  :hook (prog-mode . rainbow-delimiters-mode)
   :config
    (setq show-paren-mode 1
-         electric-pair-mode 1))
+        electric-pair-mode 1))
 
 (use-package markdown-mode
   :defer t
