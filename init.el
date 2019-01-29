@@ -327,7 +327,6 @@
     (c-set-offset 'arglist-intro '+)
     (c-set-offset 'arglist-cont-nonempty '+)
     (transient-mark-mode 1))
-  (add-hook 'c-mode-common-hook #'aggressive-indent-mode)
   (add-hook 'c-mode-common-hook #'electric-indent-mode)
   (add-hook 'c-mode-common-hook #'elispm:my-auto-complete-disabling-hook)
   (add-hook 'c-mode-common-hook #'my-c-mode-hook))
@@ -349,13 +348,16 @@
   :config
   (smex-initialize))
 
+(use-package paredit
+  :defer t
+  :ensure t
+  :hook (emacs-lisp-mode . paredit-mode))                                                                                  
+
 (use-package aggressive-indent
   :ensure t
   :defer t
-  :commands aggressive-indent-mode
-  :diminish aggressive-indent-mode
-  :config
-  (aggressive-indent-mode t))     
+  :hook (prog-mode . aggressive-indent-mode)
+  :diminish aggressive-indent-mode)   
 
 (use-package swiper
   :defer t
