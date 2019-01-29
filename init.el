@@ -106,6 +106,7 @@
            ("C-l C-s" . isearch-forward)
            ("C-l C-r" . isearch-backward)
            ("C-l c" . compile)
+           ("C-l $" . shell)
            ("C-x C-o" . find-file))
 
 ;; If these are needed, use (use-package :quelpa to enable
