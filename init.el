@@ -184,8 +184,12 @@
 
 (use-package saveplace
   :ensure nil
+  :defer t
+  :config
+  (setq save-place-file (expand-file-name "places" user-emacs-directory)
+        save-place-forget-unreadable-files nil
+        save-place-limit 60)                                                                        
   :init
-  (setq save-place-file (expand-file-name "places" user-emacs-directory))
   (save-place-mode))
 
 (use-package recentf
