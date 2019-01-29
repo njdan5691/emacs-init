@@ -177,11 +177,6 @@
   (which-key-mode)
   :ensure t)
 
-(use-package dired 
-  :defer t
-  :ensure nil
-  :config
-  (setq dired-listing-switches "-alGhvF --group-directories-first"))
 
 (use-package saveplace
   :ensure nil
@@ -497,26 +492,20 @@ If the input is non-empty, it is inserted at point."
   (setq yankpad-file (expand-file-name "~/.emacs.d/yankpad.org"))
   :ensure t)
 
-(use-package dired-x
+(use-package dired
   :defer t
-  :bind (("C-c C-o" . dired-omit-mode))
-  :bind (("C-c D" . find-name-dired))
-  :bind (("C-c o" . zz:dired-open-file))
+  :ensure nil
   :commands (dired-dwim-target-directory)
+  :bind (("C-c D" . find-name-dired)
+         ("C-c o" . zz:dired-open-file)
+         ("C-c C-o" . dired-omit-mode))
   :config
   (defun zz:dired-open-file ()
     "In dired, open the file named on this line."
     (interactive)
     (let* ((file (dired-get-filename nil t)))
       (call-process "xdg-open" nil 0 nil file)))
-  (progn
-    (setq dired-omit-verbose nil)
-    (setq-default dired-omit-files-p t) ; Buffer-local variable                                     
-    ;;(setq dired-omit-files (concat dired-omit-files "\\|\\.ms$\\|\\.o$\\|^\\..+$"))               
-    (setq dired-omit-files "^\\.[^.]\\|\\.ms$\\|\\.o$")
-    ;; hide backup, autosave, *.*~ files                                                            
-    ;; omit mode can be toggled using `M-o' in dired buffer                                         
-    (add-hook 'dired-mode-hook #'dired-omit-mode)))
+  (setq dired-listing-switches "-alGhvF --group-directories-first"))                                                      
 
 (use-package files
   :bind (("C-c C-k" . elispm:kill-other-buffers))
