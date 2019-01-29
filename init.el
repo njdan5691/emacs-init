@@ -505,7 +505,14 @@ If the input is non-empty, it is inserted at point."
     (interactive)
     (let* ((file (dired-get-filename nil t)))
       (call-process "xdg-open" nil 0 nil file)))
-  (setq dired-listing-switches "-alGhvF --group-directories-first"))                                                      
+  (setq dired-listing-switches "-alGhvF --group-directories-first"))   
+
+(use-package dired-x
+  :config
+  (progn
+    (setq dired-omit-verbose nil)
+    (setq dired-omit-files "^\\.[^.]\\|\\.ms$\\|\\.o$")                                                              
+    (add-hook 'dired-mode-hook #'dired-omit-mode)))
 
 (use-package files
   :bind (("C-c C-k" . elispm:kill-other-buffers))
