@@ -327,7 +327,6 @@
     (c-set-offset 'arglist-intro '+)
     (c-set-offset 'arglist-cont-nonempty '+)
     (transient-mark-mode 1))
-  (add-hook 'c-mode-common-hook #'electric-indent-mode)
   (add-hook 'c-mode-common-hook #'elispm:my-auto-complete-disabling-hook)
   (add-hook 'c-mode-common-hook #'my-c-mode-hook))
 
