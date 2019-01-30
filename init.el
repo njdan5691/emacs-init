@@ -299,12 +299,6 @@
                ("C-c x" . c-mark-function)
                ("C-c c" . compile)
                ("C-c t" . elispm:toggle-tab-width)
-               ("C-c g d" . ggtags-find-definition)                                                                                   
-               ("C-c g o" . ggtags-find-other-symbol)
-               ("C-c g e" . ggtags-find-tag-regexp)
-               ("C-c g g" . ggtags-grep)
-               ("C-c g r" . ggtags-find-reference)
-               ("C-c g f" . counsel-gtags-find-file)
                ("C-c y a" . yankpad-append-category)
                ("C-c y e" . yankpad-edit)
                ("C-c y c" . yankpad-capture-snippet)
@@ -380,18 +374,34 @@
          ("M-x" . counsel-M-x)
          ))
 
+
 (use-package ggtags
   :defer t
   :diminish ggtags-mode
+  :bind (("C-c g d" . ggtags-find-definition)
+         ("C-c g o" . ggtags-find-other-symbol)
+         ("C-c g e" . ggtags-find-tag-regexp)
+         ("C-c g g" . ggtags-grep)
+         ("C-c g r" . ggtags-find-reference)
+         ("C-c g f" . counsel-gtags-find-file))
   :config
   (progn
-    (setq ggtags-use-sqlite3 1)
+    (bind-keys :map global-map
+               :prefix-map zz:ggtags-prefix
+               :prefix "C-c g")
+
+    (setq ggtags-use-sqlite3 1)                                                                     
     (setq-local imenu-create-index-function #'ggtags-build-imenu-index)
+    (add-hook 'dired-mode
+              (lambda ()
+                gg-tags-mode 1))
     (add-hook 'c-mode-common-hook
               (lambda ()
                 (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
                   (ggtags-mode 1)))))
   :ensure t)
+
+
 
 (use-package counsel-gtags
   :defer t
