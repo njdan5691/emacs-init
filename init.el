@@ -35,11 +35,18 @@
 (require 'package)                                                                                  
 (setq package-enable-at-startup nil)
 
-(setq package-archives
-      '(("melpa"        . "https://melpa.org/packages/")))
+;;(setq package-archives
+;;      '(("melpa"        . "https://melpa.org/packages/")))
 
-;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-;;(package-initialize 'noactivate)
+(setq package-archives
+      '(("GNU ELPA"     . "https://elpa.gnu.org/packages/")
+        ("MELPA Stable" . "https://stable.melpa.org/packages/")
+        ("MELPA"        . "https://melpa.org/packages/"))
+      package-archive-priorities
+      '(("MELPA Stable" . 10)
+        ("GNU ELPA"     . 5)
+        ("MELPA"        . 0)))
+
 (package-initialize)
 (defun package--save-selected-packages (&rest opt) nil)
 
@@ -80,7 +87,6 @@
 (global-unset-key (kbd "C-z"))
 
 (bind-keys :map global-map
-           ;;("C-z" . save-buffers-kill-emacs)
            ("C-x k" . kill-this-buffer)
            ("<f1>" . menu-bar-open)
            ("M-1" . menu-bar-open)
@@ -176,7 +182,6 @@
   (setq which-key-side-window-max-height 0.40)
   (which-key-mode)
   :ensure t)
-
 
 (use-package saveplace
   :ensure nil
@@ -325,7 +330,6 @@
     (transient-mark-mode 1))
   (add-hook 'c-mode-common-hook #'elispm:my-auto-complete-disabling-hook)
   (add-hook 'c-mode-common-hook #'my-c-mode-hook))
-
 
 (use-package easy-kill
   :defer t
