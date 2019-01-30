@@ -165,7 +165,6 @@
   (add-hook 'before-save-hook 'delete-trailing-whitespace))
 
 (use-package compile
-  :defer t
   :config
   (setq nmake-command "nmake"
         compilation-last-buffer nil
@@ -274,11 +273,8 @@
   (defun my-c-mode-hook ()
     (global-hl-line-mode -1)
     (setq-local eldoc-echo-area-use-multiline-p t)
-        (setq c-basic-offset 2
-          c-default-style
-          ((java-mode . "java")
-           (awk-mode . "awk")
-           (other . "linux")))
+    (setq c-basic-offset 2
+          c-default-style "linux")
     (bind-keys :map global-map
                :prefix-map zz:ggtags-prefix
                :prefix "C-c g")
@@ -450,7 +446,6 @@
   :ensure t)
 
 (use-package auto-complete
-  :defer t
   :diminish
   :config
   (progn
