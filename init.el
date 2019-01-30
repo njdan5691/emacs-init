@@ -274,8 +274,11 @@
   (defun my-c-mode-hook ()
     (global-hl-line-mode -1)
     (setq-local eldoc-echo-area-use-multiline-p t)
-    (setq c-default-style "linux"
-          c-basic-offset 2)
+        (setq c-basic-offset 2
+          c-default-style
+          ((java-mode . "java")
+           (awk-mode . "awk")
+           (other . "linux")))
     (bind-keys :map global-map
                :prefix-map zz:ggtags-prefix
                :prefix "C-c g")
