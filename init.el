@@ -269,6 +269,7 @@
 (use-package cc-mode
   :defer t
   :ensure nil
+  :requires auto-complete
   :config
   (defun my-c-mode-hook ()
     (global-hl-line-mode -1)
