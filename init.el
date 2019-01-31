@@ -433,8 +433,7 @@
 
 (use-package flyspell
   :defer t
-  :config
-  (add-hook 'text-mode-hook #'flyspell-mode))
+  :hook (text-mode . flyspell-mode))
 
 (use-package shell
   :defer t
