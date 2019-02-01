@@ -122,6 +122,7 @@
 ;;(el-get-bundle njdan5691/elisp-misc)     
 (use-package elisp-misc
   :defer t
+  :bind (("C-c TAB" . elispm:reformat-buffer))
   :ensure t
   :quelpa (elisp-misc :fetcher github :repo "njdan5691/elisp-misc"))
 
@@ -319,7 +320,6 @@
             (message (concat "No snippet named " name))))))
 
     (bind-keys :map c-mode-base-map
-               ("C-c TAB" . elispm:reformat-buffer)
                ("C-c z" . zz:indent-with-gnu-indent)
                ("C-c x" . c-mark-function)
                ("C-c c" . compile)
