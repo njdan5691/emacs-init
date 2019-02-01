@@ -318,6 +318,7 @@
 
 (use-package paredit
   :defer t
+  :diminish
   :ensure t
   :hook (emacs-lisp-mode . paredit-mode))
 
