@@ -395,6 +395,9 @@ If the input is non-empty, it is inserted at point."
   (set-face-background 'hl-line "darkgreen")
   :hook (after-init . global-hl-line-mode))
 
+(use-package eldoc
+  :diminish eldoc-mode)
+
 (use-package lisp-mode
   :defer t
   :config
