@@ -98,8 +98,7 @@
            ("C--" . text-scale-decrease)
            ("C-c a" . apropos-command)
            ("C-l C-s" . isearch-forward)
-           ("C-l C-r" . isearch-backward)
-           ("C-l c" . compile)
+           ("C-l C-r" . isearch-backward))
            ("C-l $" . shell))
 
 ;; If these are needed, use (use-package :quelpa to enable
@@ -139,19 +138,6 @@
     (engine-mode 1))
   :ensure t)
 
-(use-package sh-script
-  :ensure nil
-  :defer t
-  :config
-  (setq sh-indentation 2
-        sh-basic-offset 2))
-
-
-(use-package compile
-  :config
-  (setq nmake-command "nmake"
-        compilation-last-buffer nil
-        compilation-skip-threshold 2))
 
 ;; Save minibuffer histories
 (use-package savehist
@@ -295,7 +281,6 @@
     (bind-keys :map c-mode-base-map
                ("C-c z" . zz:indent-with-gnu-indent)
                ("C-c x" . c-mark-function)
-               ("C-c c" . compile)
                ("M-." . ggtags-find-tag-dwim)
                ("M-?" . ggtags-show-definition)
                ("M-," . ggtags-prev-mark)
@@ -545,6 +530,20 @@ If the input is non-empty, it is inserted at point."
          ("C-c R" . replace-regexp)
          ("C-c q" . query-replace)
          ("C-c Q" . query-replace-regexp)))
+
+(use-package sh-script
+  :ensure nil
+  :defer t
+  :config
+  (setq sh-indentation 2
+        sh-basic-offset 2))
+
+(use-package compile
+  :bind (("C-l c" . compile))
+  :config
+  (setq nmake-command "nmake"
+        compilation-last-buffer nil
+        compilation-skip-threshold 2))
 
 (use-package files
   :ensure nil
