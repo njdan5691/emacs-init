@@ -100,10 +100,6 @@
            ("M-0" . package-list-packages)
            ("C-+" . text-scale-increase)
            ("C--" . text-scale-decrease)
-           ("C-c r" . replace-string)
-           ("C-c R" . replace-regexp)
-           ("C-c q" . query-replace)
-           ("C-c Q" . query-replace-regexp)
            ("C-c a" . apropos-command)
            ("C-l l" . load-file)
            ("C-l C-s" . isearch-forward)
@@ -548,6 +544,13 @@ If the input is non-empty, it is inserted at point."
          ("M-2" . shell-command))
   :config
   (add-hook 'before-save-hook 'delete-trailing-whitespace))
+
+(use-package replace
+  :ensure nil
+  :bind (("C-c r" . replace-string)
+         ("C-c R" . replace-regexp)
+         ("C-c q" . query-replace)
+         ("C-c Q" . query-replace-regexp)))
 
 (use-package files
   :ensure nil
