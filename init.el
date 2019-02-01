@@ -126,6 +126,7 @@
 
 (use-package elisp-misc
   :bind (("C-c TAB" . elispm:reformat-buffer)
+         ("C-c C-k" . elispm:kill-other-buffers)
          ("C-c t" . elispm:toggle-tab-width))
   :quelpa (elisp-misc :fetcher github :repo "njdan5691/elisp-misc"))
 
