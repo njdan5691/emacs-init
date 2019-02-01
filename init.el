@@ -125,12 +125,6 @@
     (engine-mode 1))
   :ensure t)
 
-
-;; Save minibuffer histories
-(use-package savehist
-  :config
-  (savehist-mode))
-
 ;; displays the key bindings following your currently entered incomplete command
 (use-package which-key
   :init
@@ -138,31 +132,7 @@
   (which-key-mode)
   :ensure t)
 
-(use-package saveplace
-  :ensure nil
-  :defer t
-  :config
-  (setq save-place-file (expand-file-name "places" user-emacs-directory)
-        save-place-forget-unreadable-files nil
-        save-place-limit 60)                                                                        
-  :init
-  (save-place-mode))
-
-(use-package recentf
-  :defer t
-  :config
-  (progn
-    (setq recentf-exclude '("^/var/folders\.*"
-                            "COMMIT_EDITMSG\'"
-                            ".*-autoloads\.el\'"
-                            "[/\]\elpa/"))
-    (setq recentf-save-file (expand-file-name "recentf" user-emacs-directory)
-          recentf-max-saved-items 15)))
-
-(use-package recentf-ext
-  :defer t
-  :ensure t)
-
+;; Package Graveyard, packages I no longer use.
 
 ;;(use-package el-get
 ;;  :defer t
@@ -241,58 +211,11 @@
           (message (concat "No snippet named " name))))))
   :ensure ivy)
 
-
-(use-package cc-mode
-  :defer t
-  :ensure auto-complete
-  :config
-  (defun my-c-mode-hook ()
-    (global-hl-line-mode -1)
-    (setq-local eldoc-echo-area-use-multiline-p t)
-    (setq c-basic-offset 2
-          c-default-style "linux")
-    (bind-keys :map global-map
-               :prefix-map zz:ggtags-prefix
-               :prefix "C-c g")
-    (defun zz:select-snippet ()
-      (interactive)
-      (unless yankpad-category
-        (or (yankpad-local-category-to-major-mode)
-            (yankpad-set-category)))
-      (let ((name (ivy-read "Snippet:" (yankpad-active-snippets))))
-        (let ((snippet (assoc name (yankpad-active-snippets))))
-          (if snippet
-              (yankpad--run-snippet snippet)
-            (message (concat "No snippet named " name))))))
-
-    (bind-keys :map c-mode-base-map
-               ("C-c z" . zz:indent-with-gnu-indent)
-               ("C-c x" . c-mark-function)
-               ("M-." . ggtags-find-tag-dwim)
-               ("M-?" . ggtags-show-definition)
-               ("M-," . ggtags-prev-mark)
-               ("M-p" . beginning-of-defun)
-               ("M-n" . end-of-defun))
-
-    (setq comment-start "// "
-          comment-end ""
-          show-trailing-whitespace t)
-    (c-toggle-auto-state 1)
-    (c-toggle-hungry-state 1)
-    (setq ac-sources (delete 'ac-source-dictionary ac-sources))
-    (c-set-offset 'comment-intro 0)
-    (c-set-offset 'arglist-intro '+)
-    (c-set-offset 'arglist-cont-nonempty '+)
-    (transient-mark-mode 1))
-  (add-hook 'c-mode-common-hook #'elispm:my-auto-complete-disabling-hook)
-  (add-hook 'c-mode-common-hook #'my-c-mode-hook))
-
 (use-package easy-kill
   :defer t
   :init
   (global-set-key [remap kill-ring-save] 'easy-kill)
   (global-set-key [remap mark-paragraph] 'easy-mark)
-  :defer t
   :ensure t)
 
 (use-package smex
@@ -302,11 +225,6 @@
   :commands smex-initialize
   :config
   (smex-initialize))
-
-(use-package paredit
-  :defer t
-  :ensure t
-  :hook (emacs-lisp-mode . paredit-mode))                                                                                  
 
 (use-package aggressive-indent
   :ensure t
@@ -372,28 +290,11 @@
          ("C-h f" . counsel-describe-function))
   :config
   (setq ivy-use-virtual-buffers t)
-  :ensure t)                                                                                        
+  :ensure t)     
 
-(use-package lisp-mode
+(use-package markdown-mode
   :defer t
-  :config
-  (defun zz:disable-tabs () (setq indent-tabs-mode nil))
-  (progn
-    (setq tab-always-indent 'complete)
-    (add-to-list 'completion-styles 'initials t)
-    (add-hook 'list-mode-hook 'zz:disable-tabs)
-    (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
-    (add-hook 'emacs-lisp-mode-hook 'zz:disable-tabs)
-    (bind-key "M-." 'find-function-at-point)))
-
-(use-package flyspell
-  :defer t
-  :hook (text-mode . flyspell-mode))
-
-(use-package makefile
-  :defer t
-  :ensure nil
-  :mode (("\\.nmk\\'" . makefile-gmake-mode)))
+  :ensure t)
 
 (use-package counsel
   :defer t
@@ -419,9 +320,58 @@
    (setq show-paren-mode 1
         electric-pair-mode 1))
 
-(use-package markdown-mode
+(use-package paredit
   :defer t
-  :ensure t)
+  :ensure t
+  :hook (emacs-lisp-mode . paredit-mode))    
+
+;;;;;;;;;;;;;;;;;
+;; Configuration for packages that are part of emacs installation
+
+(use-package cc-mode
+  :defer t
+  :ensure auto-complete
+  :config
+  (defun my-c-mode-hook ()
+    (global-hl-line-mode -1)
+    (setq-local eldoc-echo-area-use-multiline-p t)
+    (setq c-basic-offset 2
+          c-default-style "linux")
+    (bind-keys :map global-map
+               :prefix-map zz:ggtags-prefix
+               :prefix "C-c g")
+    (defun zz:select-snippet ()
+      (interactive)
+      (unless yankpad-category
+        (or (yankpad-local-category-to-major-mode)
+            (yankpad-set-category)))
+      (let ((name (ivy-read "Snippet:" (yankpad-active-snippets))))
+        (let ((snippet (assoc name (yankpad-active-snippets))))
+          (if snippet
+              (yankpad--run-snippet snippet)
+            (message (concat "No snippet named " name))))))
+
+    (bind-keys :map c-mode-base-map
+               ("C-c z" . zz:indent-with-gnu-indent)
+               ("C-c x" . c-mark-function)
+               ("M-." . ggtags-find-tag-dwim)
+               ("M-?" . ggtags-show-definition)
+               ("M-," . ggtags-prev-mark)
+               ("M-p" . beginning-of-defun)
+               ("M-n" . end-of-defun))
+
+    (setq comment-start "// "
+          comment-end ""
+          show-trailing-whitespace t)
+    (c-toggle-auto-state 1)
+    (c-toggle-hungry-state 1)
+    (setq ac-sources (delete 'ac-source-dictionary ac-sources))
+    (c-set-offset 'comment-intro 0)
+    (c-set-offset 'arglist-intro '+)
+    (c-set-offset 'arglist-cont-nonempty '+)
+    (transient-mark-mode 1))
+  (add-hook 'c-mode-common-hook #'elispm:my-auto-complete-disabling-hook)
+  (add-hook 'c-mode-common-hook #'my-c-mode-hook))
 
 (use-package kmacro
   :defer t
@@ -445,11 +395,26 @@ If the input is non-empty, it is inserted at point."
   (set-face-background 'hl-line "darkgreen")
   :hook (after-init . global-hl-line-mode))
 
-(use-package yankpad
+(use-package lisp-mode
   :defer t
   :config
-  (setq yankpad-file (expand-file-name "~/.emacs.d/yankpad.org"))
-  :ensure t)
+  (defun zz:disable-tabs () (setq indent-tabs-mode nil))
+  (progn
+    (setq tab-always-indent 'complete)
+    (add-to-list 'completion-styles 'initials t)
+    (add-hook 'list-mode-hook 'zz:disable-tabs)
+    (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+    (add-hook 'emacs-lisp-mode-hook 'zz:disable-tabs)
+    (bind-key "M-." 'find-function-at-point)))
+
+(use-package flyspell
+  :defer t
+  :hook (text-mode . flyspell-mode))
+
+(use-package makefile
+  :defer t
+  :ensure nil
+  :mode (("\\.nmk\\'" . makefile-gmake-mode)))
 
 (use-package dired
   :defer t
@@ -496,6 +461,11 @@ If the input is non-empty, it is inserted at point."
   :config
   (add-hook 'before-save-hook 'delete-trailing-whitespace))
 
+;; Save minibuffer histories
+(use-package savehist
+  :config
+  (savehist-mode))
+
 (use-package replace
   :ensure nil
   :bind (("C-c r" . replace-string)
@@ -520,6 +490,31 @@ If the input is non-empty, it is inserted at point."
   :ensure nil
   :bind (("C-l C-s" . isearch-forward)
          ("C-l C-r" . isearch-backward)))
+
+(use-package saveplace
+  :ensure nil
+  :defer t
+  :config
+  (setq save-place-file (expand-file-name "places" user-emacs-directory)
+        save-place-forget-unreadable-files nil
+        save-place-limit 60)                                                                        
+  :init
+  (save-place-mode))
+
+(use-package recentf
+  :defer t
+  :config
+  (progn
+    (setq recentf-exclude '("^/var/folders\.*"
+                            "COMMIT_EDITMSG\'"
+                            ".*-autoloads\.el\'"
+                            "[/\]\elpa/"))
+    (setq recentf-save-file (expand-file-name "recentf" user-emacs-directory)
+          recentf-max-saved-items 15)))
+
+(use-package recentf-ext
+  :defer t
+  :ensure t)
 
 (use-package shell
   :defer t
