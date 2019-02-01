@@ -262,9 +262,35 @@
 ;;    (setq org-startup-truncated nil)))
 
 (use-package yankpad
-  :config
+  :ensure t
+  :bind
+  (
+   :map global-map
+   :prefix-map zz:yankpad-prefix
+   :prefix "C-c y"
+   ("a" . yankpad-append-category)
+   ("e" . yankpad-edit)
+   ("m" . yankpad-map)
+   ("c" . yankpad-capture-snippet)
+   ("x" . zz:select-snippet)
+   ("r" . yankpad-reload)
+   ("i" . yankpad-insert)
+   ("s" . yankpad-set-category))
+  :init
   (setq yankpad-file (expand-file-name "~/.emacs.d/yankpad.org"))
-  :ensure t)
+  :config
+  (defun zz:select-snippet ()
+    (interactive)
+    (unless yankpad-category
+      (or (yankpad-local-category-to-major-mode)
+          (yankpad-set-category)))
+    (let ((name (ivy-read "Snippet:" (yankpad-active-snippets))))
+      (let ((snippet (assoc name (yankpad-active-snippets))))
+        (if snippet
+            (yankpad--run-snippet snippet)
+          (message (concat "No snippet named " name))))))
+  :ensure ivy)
+
 
 (use-package cc-mode
   :defer t
