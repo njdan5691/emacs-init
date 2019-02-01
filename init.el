@@ -229,11 +229,6 @@
 ;;   :init
 ;;   :mode "\\.\\(cgi\\|psgi\\|t\\|pl\\)$")
 
-;; (use-package yankpad
-;;   :config
-;;   (setq yankpad-file (expand-file-name "~/.emacs.d/yankpad.org"))
-;;   :ensure t)
-
 ;; select text to be hightlighted on the screen
 ;; (use-package hi-lock
 ;;   :bind (("M-o l" . highlight-lines-matching-regexp)
@@ -265,6 +260,11 @@
 ;;  :init
 ;;  (progn
 ;;    (setq org-startup-truncated nil)))
+
+(use-package yankpad
+  :config
+  (setq yankpad-file (expand-file-name "~/.emacs.d/yankpad.org"))
+  :ensure t)
 
 (use-package cc-mode
   :defer t
