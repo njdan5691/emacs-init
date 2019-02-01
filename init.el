@@ -6,6 +6,8 @@
     (progn
       (tool-bar-mode -1)
       (scroll-bar-mode -1)
+      (global-set-key (kbd "C-+") 'text-scale-increase)
+      (global-set-key (kbd "C--") 'text-scale-decrease)
       (set-background-color "black")
       (set-foreground-color "white")
       (set-default-font "Consolas-20")
@@ -81,8 +83,6 @@
 (global-unset-key (kbd "C-z"))
 
 (bind-keys :map global-map                                                
-           ("C-+" . text-scale-increase)
-           ("C--" . text-scale-decrease)
            ("C-c a" . apropos-command))
 
 (use-package elisp-misc
