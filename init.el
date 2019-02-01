@@ -334,6 +334,7 @@
   :config
   (defun my-c-mode-hook ()
     (global-hl-line-mode -1)
+    (abbrev-mode -1)
     (setq-local eldoc-echo-area-use-multiline-p t)
     (setq c-basic-offset 2
           c-default-style "linux")
