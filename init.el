@@ -158,15 +158,6 @@
   (setq sh-indentation 2
         sh-basic-offset 2))
 
-(use-package minibuffer
-  :config
-  (setq history-length 2300
-        enable-recursive-minibuffers t
-        history-delete-duplicates t))
-
-(use-package simple
-  :config
-  (add-hook 'before-save-hook 'delete-trailing-whitespace))
 
 (use-package compile
   :config
@@ -543,8 +534,22 @@ If the input is non-empty, it is inserted at point."
     (setq dired-omit-files "^\\.[^.]\\|\\.ms$\\|\\.o$")                                                              
     (add-hook 'dired-mode-hook #'dired-omit-mode)))
 
+(use-package minibuffer
+  :ensure nil
+  :config
+  (setq history-length 2300                                                                         
+        enable-recursive-minibuffers t
+        history-delete-duplicates t))
+
+(use-package simple
+  :ensure nil
+  :config
+  (add-hook 'before-save-hook 'delete-trailing-whitespace))
+
 (use-package files
-  :bind (("C-c C-k" . elispm:kill-other-buffers))
+  :ensure nil
+  :bind (("C-c C-k" . elispm:kill-other-buffers)
+         ("C-x C-o" . find-file))
   :config
   (progn
     (setq require-final-newline t
@@ -552,10 +557,9 @@ If the input is non-empty, it is inserted at point."
           confirm-nonexistent-file-or-buffer nil
           backup-directory-alist `(("." . "~/.backups.emacs.d"))
           delete-old-versions t
-          kept-new-versions 10
+          kept-new-versions 10                                                                      
           kept-old-versions 0
           version-control t)))
-
 
 ;; This enables the downcase-region command, which is disabled
 ;; by default.
