@@ -10,10 +10,9 @@
       (global-set-key (kbd "C--") 'text-scale-decrease)
       (set-background-color "black")
       (set-foreground-color "white")
-      (set-default-font "Consolas-20")
       ;;(set-face-attribute 'default t :font "Consolas-20")
       ;;(set-face-attribute 'default t :font "Office Code Pro-26")
-      ))
+      (set-default-font "Consolas-20")))
 
 ;; If the variable is a buffer-local, and you want it the
 ;; same in all types of buffers add it here.
