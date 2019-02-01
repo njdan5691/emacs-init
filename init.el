@@ -551,7 +551,7 @@ If the input is non-empty, it is inserted at point."
 
 (use-package files
   :ensure nil
-  :bind (("C-c C-k" . elispm:kill-other-buffers)
+  :bind (("C-l l" . load-file)
          ("C-x C-o" . find-file))
   :config
   (progn
