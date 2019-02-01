@@ -340,17 +340,6 @@
     (bind-keys :map global-map
                :prefix-map zz:ggtags-prefix
                :prefix "C-c g")
-    (defun zz:select-snippet ()
-      (interactive)
-      (unless yankpad-category
-        (or (yankpad-local-category-to-major-mode)
-            (yankpad-set-category)))
-      (let ((name (ivy-read "Snippet:" (yankpad-active-snippets))))
-        (let ((snippet (assoc name (yankpad-active-snippets))))
-          (if snippet
-              (yankpad--run-snippet snippet)
-            (message (concat "No snippet named " name))))))
-
     (bind-keys :map c-mode-base-map
                ("C-c z" . zz:indent-with-gnu-indent)
                ("C-c x" . c-mark-function)
@@ -359,7 +348,6 @@
                ("M-," . ggtags-prev-mark)
                ("M-p" . beginning-of-defun)
                ("M-n" . end-of-defun))
-
     (setq comment-start "// "
           comment-end ""
           show-trailing-whitespace t)
