@@ -92,8 +92,6 @@
            ("M-1" . menu-bar-open)
            ("<f2>" . shell-command)
            ("M-2" . shell-command)
-           ("<f4>" . grep)
-           ("M-4" . grep)
            ("<f7>" . copy-to-register)
            ("M-7" . copy-to-register)
            ("<f8>" . insert-register)
@@ -104,7 +102,6 @@
            ("C--" . text-scale-decrease)
            ("C-c r" . replace-string)
            ("C-c R" . replace-regexp)
-           ("C-c t" . zz:toggle-tab-width)
            ("C-c q" . query-replace)
            ("C-c Q" . query-replace-regexp)
            ("C-c a" . apropos-command)
@@ -203,12 +200,6 @@
   :defer t
   :ensure t)
 
-(use-package grep 
-  :defer t
-  :ensure nil
-  :config
-  (setq grep-use-null-device nil)
-  (grep-apply-setting 'grep-command '("ag --depth 0 --vimgrep " . 24)))
 
 ;;(use-package el-get
 ;;  :defer t
@@ -541,6 +532,15 @@ If the input is non-empty, it is inserted at point."
   (setq history-length 2300                                                                         
         enable-recursive-minibuffers t
         history-delete-duplicates t))
+
+(use-package grep                                                                                   
+  :defer t
+  :ensure nil
+  :bind (("<f4>" . grep)
+         ("M-4" . grep))
+  :config
+  (setq grep-use-null-device nil)
+  (grep-apply-setting 'grep-command '("ag --depth 0 --vimgrep " . 24)))
 
 (use-package simple
   :ensure nil
