@@ -544,6 +544,8 @@ If the input is non-empty, it is inserted at point."
 
 (use-package simple
   :ensure nil
+  :bind (("<f2>" . shell-command)
+         ("M-2" . shell-command))
   :config
   (add-hook 'before-save-hook 'delete-trailing-whitespace))
 
