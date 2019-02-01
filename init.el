@@ -116,14 +116,17 @@
            ("C-x C-o" . find-file))
 
 ;; If these are needed, use (use-package :quelpa to enable
-;; (el-get-bundle pheaver/breadcrumb)
-;; (el-get-bundle dmgerman/org-manage)
+;; (use-package breadcrumb
+;;   :ensure t
+;;   :quelpa (breadcrumb :fetcher github :repo "pheaver/breadcrumb"))
 
-;;(el-get-bundle njdan5691/elisp-misc)     
+;; (use-package org-manage
+;;   :ensure t
+;;   :quelpa (org-manage :fetcher github :repo "dmgerman/org-manage"))
+
 (use-package elisp-misc
-  :defer t
-  :bind (("C-c TAB" . elispm:reformat-buffer))
-  :ensure t
+  :bind (("C-c TAB" . elispm:reformat-buffer)
+         ("C-c t" . elispm:toggle-tab-width))
   :quelpa (elisp-misc :fetcher github :repo "njdan5691/elisp-misc"))
 
 (use-package engine-mode
@@ -305,9 +308,6 @@
     (bind-keys :map global-map
                :prefix-map zz:ggtags-prefix
                :prefix "C-c g")
-    (bind-keys :map global-map
-               :prefix-map zz:yankpad-prefix
-               :prefix "C-c y")
     (defun zz:select-snippet ()
       (interactive)
       (unless yankpad-category
@@ -323,14 +323,6 @@
                ("C-c z" . zz:indent-with-gnu-indent)
                ("C-c x" . c-mark-function)
                ("C-c c" . compile)
-               ("C-c t" . elispm:toggle-tab-width)
-               ("C-c y a" . yankpad-append-category)
-               ("C-c y e" . yankpad-edit)
-               ("C-c y c" . yankpad-capture-snippet)
-               ("C-c y x" . zz:select-snippet)
-               ("C-c y r" . yankpad-reload)
-               ("C-c y i" . yankpad-insert)
-               ("C-c y s" . yankpad-set-category)
                ("M-." . ggtags-find-tag-dwim)
                ("M-?" . ggtags-show-definition)
                ("M-," . ggtags-prev-mark)
