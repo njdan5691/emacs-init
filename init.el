@@ -98,7 +98,7 @@
            ("C--" . text-scale-decrease)
            ("C-c a" . apropos-command)
            ("C-l C-s" . isearch-forward)
-           ("C-l C-r" . isearch-backward))
+           ("C-l C-r" . isearch-backward)
            ("C-l $" . shell))
 
 ;; If these are needed, use (use-package :quelpa to enable
