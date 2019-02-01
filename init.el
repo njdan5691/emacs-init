@@ -83,19 +83,10 @@
 (global-unset-key (kbd "<f10>"))
 (global-unset-key (kbd "C-z"))
 
-(bind-keys :map global-map
-           ("C-x k" . kill-this-buffer)
-           ("<f1>" . menu-bar-open)
-           ("M-1" . menu-bar-open)
-           ("<f7>" . copy-to-register)
-           ("M-7" . copy-to-register)
-           ("<f8>" . insert-register)
-           ("M-8" . insert-register)                                                               
+(bind-keys :map global-map                                                
            ("C-+" . text-scale-increase)
            ("C--" . text-scale-decrease)
-           ("C-c a" . apropos-command)
-           ("C-l C-s" . isearch-forward)
-           ("C-l C-r" . isearch-backward))
+           ("C-c a" . apropos-command))
 
 ;; If these are needed, use (use-package :quelpa to enable
 ;; (use-package breadcrumb
@@ -511,6 +502,24 @@ If the input is non-empty, it is inserted at point."
          ("C-c R" . replace-regexp)
          ("C-c q" . query-replace)
          ("C-c Q" . query-replace-regexp)))
+
+(use-package menu-bar
+  :ensure nil
+  :bind (("C-x k" . kill-this-buffer)
+         ("<f1>" . menu-bar-open)
+         ("M-1" . menu-bar-open)))
+
+(use-package register
+  :ensure nil
+  :bind (("<f7>" . copy-to-register)
+         ("M-7" . copy-to-register)
+         ("<f8>" . insert-register)
+         ("M-8" . insert-register)))
+
+(use-package isearch
+  :ensure nil
+  :bind (("C-l C-s" . isearch-forward)
+         ("C-l C-r" . isearch-backward)))
 
 (use-package shell
   :defer t
