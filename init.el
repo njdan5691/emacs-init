@@ -35,9 +35,6 @@
 (require 'package)                                                                                  
 (setq package-enable-at-startup nil)
 
-;;(setq package-archives
-;;      '(("melpa"        . "https://melpa.org/packages/")))
-
 (setq package-archives
       '(("GNU ELPA"     . "https://elpa.gnu.org/packages/")
         ("MELPA Stable" . "https://stable.melpa.org/packages/")
