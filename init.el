@@ -336,16 +336,11 @@
   ;; :bind (:map isearch-mode-map
   ;;            ("M-i" . swiper-from-isearch)) ; isearch > swiper
 
-  :bind (
-         ;([remap isearch-forward] . swiper)
-         ;([remap isearch-backward] . swiper)
-         ("C-s" . swiper)
+  :bind (("C-s" . swiper)
          ("C-r" . swiper)
          ("C-x C-f" . counsel-find-file)
          ("M-i" . counsel-imenu)
-         ("M-x" . counsel-M-x)
-         ))
-
+         ("M-x" . counsel-M-x)))
 
 (use-package ggtags
   :defer t
@@ -372,8 +367,6 @@
                 (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
                   (ggtags-mode 1)))))
   :ensure t)
-
-
 
 (use-package counsel-gtags
   :defer t
