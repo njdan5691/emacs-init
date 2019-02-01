@@ -1,6 +1,6 @@
 (setq gc-cons-threshold 64000000)
 (add-hook 'after-init-hook #'(lambda ()
-                               ;; restore after startup                                             
+                               ;; restore after startup
                                (setq gc-cons-threshold 800000)))
 (if (eq window-system 'x)
     (progn
