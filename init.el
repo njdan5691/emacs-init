@@ -95,8 +95,7 @@
            ("C--" . text-scale-decrease)
            ("C-c a" . apropos-command)
            ("C-l C-s" . isearch-forward)
-           ("C-l C-r" . isearch-backward)
-           ("C-l $" . shell))
+           ("C-l C-r" . isearch-backward))
 
 ;; If these are needed, use (use-package :quelpa to enable
 ;; (use-package breadcrumb
@@ -400,14 +399,6 @@
   :defer t
   :hook (text-mode . flyspell-mode))
 
-(use-package shell
-  :defer t
-  :ensure nil
-  :config
-  (defun zz:comint-init()                                                                           
-    (setq comint-process-echoes t))
-  (add-hook 'comint-mode-hook 'zz:comint-init))
-
 (use-package makefile
   :defer t
   :ensure nil
@@ -520,6 +511,15 @@ If the input is non-empty, it is inserted at point."
          ("C-c R" . replace-regexp)
          ("C-c q" . query-replace)
          ("C-c Q" . query-replace-regexp)))
+
+(use-package shell
+  :defer t
+  :bind (("C-l $" . shell))
+  :ensure nil
+  :config
+  (defun zz:comint-init()
+    (setq comint-process-echoes t))
+  (add-hook 'comint-mode-hook 'zz:comint-init))
 
 (use-package sh-script
   :ensure nil
