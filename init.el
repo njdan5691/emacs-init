@@ -61,6 +61,7 @@
   :init
     (setq quelpa-checkout-melpa-p nil)
     (setq quelpa-update-melpa-p nil))
+
 (require 'quelpa-use-package)
 
 (eval-when-compile
@@ -76,26 +77,13 @@
            :prefix "C-l"
            ("C-l" . recenter))
 
-(global-unset-key (kbd "<f1>"))
-(global-unset-key (kbd "<f2>"))
 (global-unset-key (kbd "<f3>"))
-(global-unset-key (kbd "<f11>"))
-(global-unset-key (kbd "<f10>"))
 (global-unset-key (kbd "C-z"))
 
 (bind-keys :map global-map                                                
            ("C-+" . text-scale-increase)
            ("C--" . text-scale-decrease)
            ("C-c a" . apropos-command))
-
-;; If these are needed, use (use-package :quelpa to enable
-;; (use-package breadcrumb
-;;   :ensure t
-;;   :quelpa (breadcrumb :fetcher github :repo "pheaver/breadcrumb"))
-
-;; (use-package org-manage
-;;   :ensure t
-;;   :quelpa (org-manage :fetcher github :repo "dmgerman/org-manage"))
 
 (use-package elisp-misc
   :bind (("C-c TAB" . elispm:reformat-buffer)
@@ -133,6 +121,14 @@
   :ensure t)
 
 ;; Package Graveyard, packages I no longer use.
+
+;; (use-package breadcrumb
+;;   :ensure t
+;;   :quelpa (breadcrumb :fetcher github :repo "pheaver/breadcrumb"))
+
+;; (use-package org-manage
+;;   :ensure t
+;;   :quelpa (org-manage :fetcher github :repo "dmgerman/org-manage"))
 
 ;;(use-package el-get
 ;;  :defer t
@@ -323,9 +319,12 @@
 (use-package paredit
   :defer t
   :ensure t
-  :hook (emacs-lisp-mode . paredit-mode))    
+  :hook (emacs-lisp-mode . paredit-mode))
 
-;;;;;;;;;;;;;;;;;
+(use-package recentf-ext
+  :defer t
+  :ensure t)
+
 ;; Configuration for packages that are part of emacs installation
 
 (use-package cc-mode
@@ -512,9 +511,7 @@ If the input is non-empty, it is inserted at point."
     (setq recentf-save-file (expand-file-name "recentf" user-emacs-directory)
           recentf-max-saved-items 15)))
 
-(use-package recentf-ext
-  :defer t
-  :ensure t)
+
 
 (use-package shell
   :defer t
@@ -560,5 +557,3 @@ If the input is non-empty, it is inserted at point."
 
 (defun display-startup-echo-area-message ()
   (message "Initialization Completed"))
-
-
