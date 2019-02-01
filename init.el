@@ -556,7 +556,7 @@ If the input is non-empty, it is inserted at point."
           confirm-nonexistent-file-or-buffer nil
           backup-directory-alist `(("." . "~/.backups.emacs.d"))
           delete-old-versions t
-          kept-new-versions 10                                                                      
+          kept-new-versions 10
           kept-old-versions 0
           version-control t)))
 
