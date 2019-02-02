@@ -82,6 +82,7 @@
 (global-unset-key (kbd "C-z"))
 
 (use-package elisp-misc
+  :ensure t
   :bind (("C-c TAB" . elispm:reformat-buffer)
          ("C-c C-k" . elispm:kill-other-buffers)
          ("C-c t" . elispm:toggle-tab-width))
@@ -89,6 +90,7 @@
 
 (use-package engine-mode
   ;; default keymap is bound to "C-x /"
+  :ensure t
   :defer t
   :config
   (require 'format-spec)
@@ -106,15 +108,14 @@
       "https://www.wikipedia.org/search-redirect.php?family=wiktionary&language=en&go=Go&search=%s"
       :keybinding "d"
       :browser 'eww-browse-url)
-    (engine-mode 1))
-  :ensure t)
+    (engine-mode 1)))
 
 ;; displays the key bindings following your currently entered incomplete command
 (use-package which-key
+  :ensure t
   :init
   (setq which-key-side-window-max-height 0.40)
-  (which-key-mode)
-  :ensure t)
+  (which-key-mode))
 
 ;; Package Graveyard, packages I no longer use.
 
@@ -203,16 +204,17 @@
           (message (concat "No snippet named " name))))))
   :ensure ivy)
 
+
 (use-package easy-kill
+  :ensure t
   :defer t
-  :init
-  (global-set-key [remap kill-ring-save] 'easy-kill)
-  (global-set-key [remap mark-paragraph] 'easy-mark)
-  :ensure t)
+  :bind (([remap kill-ring-save] . easy-kill))
+  :bind (([remap mark-paragraph] . easy-mark)))  
+
 
 (use-package smex
-  :defer t
   :ensure t
+  :defer t
   :after ivy
   :commands smex-initialize
   :config
@@ -225,8 +227,8 @@
   :diminish aggressive-indent-mode)   
 
 (use-package swiper
-  :defer t
   :ensure t
+  :defer t
   :config
   (setq ivy-use-virtual-buffers t)
   (setq  counsel-grep-base-command "ag --nocolor %s %s")
@@ -243,6 +245,7 @@
          ("M-x" . counsel-M-x)))
 
 (use-package ggtags
+  :ensure t
   :defer t
   :diminish ggtags-mode
   :bind (("C-c g d" . ggtags-find-definition)
@@ -265,68 +268,63 @@
     (add-hook 'c-mode-common-hook
               (lambda ()
                 (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
-                  (ggtags-mode 1)))))
-  :ensure t)
+                  (ggtags-mode 1))))))
 
 (use-package counsel-gtags
-  :defer t
   :ensure t
+  :defer t
   :requires swiper)
 
 (use-package ivy
-  :defer t
+  :ensure t
   :bind (("C-x b" . ivy-switch-buffer)
          ("C-x j" . ivy-kill-line)
          ("C-h v" . counsel-describe-variable)
          ("C-h s" . counsel-set-variable)
          ("C-h f" . counsel-describe-function))
-  :config
-  (setq ivy-use-virtual-buffers t)
-  :ensure t)     
+  :config (setq ivy-use-virtual-buffers t))     
 
 (use-package markdown-mode
-  :defer t
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package counsel
-  :defer t
+  :ensure t
   :bind (("C-s" . counsel-grep-or-swiper)
          ("C-x C-r" . counsel-recentf))
-  :requires swiper
-  :ensure t)
+  :requires swiper)
 
 (use-package auto-complete
+  :ensure t
   :diminish
   :config
   (progn
     (setq ac-modes '(cc-mode c-mode c++-mode))
     (ac-config-default)
-    (setq ac-delay 0.8))
-  :ensure t)
+    (setq ac-delay 0.8)))
 
 (use-package rainbow-delimiters
-  :defer t
   :ensure t
+  :defer t
   :hook (prog-mode . rainbow-delimiters-mode)
   :config
    (setq show-paren-mode 1
         electric-pair-mode 1))
 
 (use-package paredit
-  :defer t
-  :diminish
   :ensure t
+  :diminish
   :hook (emacs-lisp-mode . paredit-mode))
 
 (use-package recentf-ext
-  :defer t
-  :ensure t)
+  :ensure t
+  :defer t)
 
 ;; Configuration for packages that are part of emacs installation
 
 (use-package cc-mode
-  :defer t
   :ensure auto-complete
+  :defer t
   :config
   (defun my-c-mode-hook ()
     (global-hl-line-mode -1)
@@ -490,6 +488,7 @@ If the input is non-empty, it is inserted at point."
   (save-place-mode))
 
 (use-package recentf
+  :ensure nil
   :defer t
   :config
   (progn
@@ -501,9 +500,9 @@ If the input is non-empty, it is inserted at point."
           recentf-max-saved-items 15)))
 
 (use-package shell
+  :ensure nil
   :defer t
   :bind (("C-l $" . shell))
-  :ensure nil
   :config
   (defun zz:comint-init()
     (setq comint-process-echoes t))
@@ -517,6 +516,7 @@ If the input is non-empty, it is inserted at point."
         sh-basic-offset 2))
 
 (use-package compile
+  :ensure nil
   :bind (("C-l c" . compile))
   :config
   (setq nmake-command "nmake"
