@@ -411,7 +411,7 @@ If the input is non-empty, it is inserted at point."
   :defer t
   :ensure nil
   :commands (dired-dwim-target-directory)
-  :bind (("C-c D" . find-name-dired)
+  :bind (("C-l D" . find-name-dired)
          ("C-c o" . zz:dired-open-file)
          ("C-c C-o" . dired-omit-mode))
   :config
