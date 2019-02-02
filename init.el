@@ -81,9 +81,6 @@
 (global-unset-key (kbd "<f3>"))
 (global-unset-key (kbd "C-z"))
 
-(bind-keys :map global-map                                                
-           ("C-c a" . apropos-command))
-
 (use-package elisp-misc
   :bind (("C-c TAB" . elispm:reformat-buffer)
          ("C-c C-k" . elispm:kill-other-buffers)
@@ -503,8 +500,6 @@ If the input is non-empty, it is inserted at point."
     (setq recentf-save-file (expand-file-name "recentf" user-emacs-directory)
           recentf-max-saved-items 15)))
 
-
-
 (use-package shell
   :defer t
   :bind (("C-l $" . shell))
@@ -527,6 +522,10 @@ If the input is non-empty, it is inserted at point."
   (setq nmake-command "nmake"
         compilation-last-buffer nil
         compilation-skip-threshold 2))
+
+(use-package apropos
+  :ensure nil
+  :bind (("C-c a" . apropos-command))) 
 
 (use-package files
   :ensure nil
