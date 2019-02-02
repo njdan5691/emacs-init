@@ -204,40 +204,29 @@
           (message (concat "No snippet named " name))))))
   :ensure ivy)
 
-
 (use-package easy-kill
   :ensure t
   :defer t
   :bind (([remap kill-ring-save] . easy-kill))
   :bind (([remap mark-paragraph] . easy-mark)))  
 
-
 (use-package smex
   :ensure t
-  :defer t
   :after ivy
   :commands smex-initialize
-  :config
-  (smex-initialize))
+  :config (smex-initialize))
 
 (use-package aggressive-indent
   :ensure t
-  :defer t
   :hook (prog-mode . aggressive-indent-mode)
   :diminish aggressive-indent-mode)   
 
 (use-package swiper
   :ensure t
-  :defer t
   :config
   (setq ivy-use-virtual-buffers t)
   (setq  counsel-grep-base-command "ag --nocolor %s %s")
   (setq ivy-count-format "(%d/%d) ")
-
-  ;; This lets you start out in isearch and drop into swiper
-  ;; :bind (:map isearch-mode-map
-  ;;            ("M-i" . swiper-from-isearch)) ; isearch > swiper
-
   :bind (("C-s" . swiper)
          ("C-r" . swiper)
          ("C-x C-f" . counsel-find-file)
