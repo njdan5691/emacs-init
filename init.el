@@ -314,24 +314,28 @@
 (use-package cc-mode
   :ensure auto-complete
   :defer t
+  :bind (:map c-mode-base-map
+              ("C-c z" . zz:indent-with-gnu-indent)
+              ("C-c x" . c-mark-function)
+              ("M-." . ggtags-find-tag-dwim)
+              ("M-?" . ggtags-show-definition)
+              ("M-," . ggtags-prev-mark)
+              ("M-p" . beginning-of-defun)
+              ("M-n" . end-of-defun))
   :config
+  (defun zz:indent-with-gnu-indent()
+    "Indent the buffer using GNU indent"
+    (interactive)
+    (setq cmd (concat "indent -st " buffer-file-name))
+    (save-excursion
+      (delete-trailing-whitespace)
+      (shell-command-on-region (point-min) (point-max) cmd (buffer-name))))
   (defun my-c-mode-hook ()
     (global-hl-line-mode -1)
     (abbrev-mode -1)
     (setq-local eldoc-echo-area-use-multiline-p t)
     (setq c-basic-offset 2
           c-default-style "linux")
-    (bind-keys :map global-map
-               :prefix-map zz:ggtags-prefix
-               :prefix "C-c g")
-    (bind-keys :map c-mode-base-map
-               ("C-c z" . zz:indent-with-gnu-indent)
-               ("C-c x" . c-mark-function)
-               ("M-." . ggtags-find-tag-dwim)
-               ("M-?" . ggtags-show-definition)
-               ("M-," . ggtags-prev-mark)
-               ("M-p" . beginning-of-defun)
-               ("M-n" . end-of-defun))
     (setq comment-start "// "
           comment-end ""
           show-trailing-whitespace t)
@@ -344,6 +348,7 @@
     (transient-mark-mode 1))
   (add-hook 'c-mode-common-hook #'elispm:my-auto-complete-disabling-hook)
   (add-hook 'c-mode-common-hook #'my-c-mode-hook))
+
 
 (use-package kmacro
   :defer t
