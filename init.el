@@ -305,6 +305,15 @@
   :diminish
   :hook (emacs-lisp-mode . paredit-mode))
 
+(use-package lua-mode
+  :ensure t
+  :defer t
+  :config
+  (setq lua-indent-level 2)
+  (defun my-lua-mode-hook ()
+    (global-hl-line-mode -1))
+  (add-hook 'lua-mode-hook #'my-lua-mode-hook))
+
 (use-package recentf-ext
   :ensure t
   :defer t)
