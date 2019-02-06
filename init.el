@@ -307,12 +307,12 @@
 
 (use-package lua-mode
   :ensure t
-  :defer t
+  :mode "\\.lua\'"
   :config
   (setq lua-indent-level 2)
-  (defun my-lua-mode-hook ()
-    (global-hl-line-mode -1))
-  (add-hook 'lua-mode-hook #'my-lua-mode-hook))
+  (add-hook 'lua-mode-hook
+            (lambda ()
+              (global-hl-line-mode -1))))
 
 (use-package recentf-ext
   :ensure t
