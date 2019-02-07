@@ -14,6 +14,9 @@
       ;;(set-face-attribute 'default t :font "Office Code Pro-26")
       (set-default-font "Consolas-20")))
 
+(unless (eq window-system 'x)
+  (xterm-mouse-mode))
+
 ;; If the variable is a buffer-local, and you want it the
 ;; same in all types of buffers add it here.
 (setq-default
@@ -548,6 +551,8 @@ If the input is non-empty, it is inserted at point."
 ;; This enables the downcase-region command, which is disabled
 ;; by default.
 (put 'downcase-region 'disabled nil)
+
+(bind-key "<f10>" 'xterm-mouse-mode)                                                                
 
 (defun display-startup-echo-area-message ()
   (message "Initialization Completed"))
