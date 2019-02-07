@@ -416,14 +416,20 @@ If the input is non-empty, it is inserted at point."
   :commands (dired-dwim-target-directory)
   :bind (("C-l D" . find-name-dired)
          ("C-c o" . zz:dired-open-file)
-         ("C-c C-o" . dired-omit-mode))
+         ("C-c C-o" . dired-omit-mode)
+         :map dired-mode-map
+         ("s" . zz:dired-switch-edit))
   :config
+  (defun zz:dired-switch-edit ()
+    (interactive)
+    (dired-sort-toggle-or-edit t))
   (defun zz:dired-open-file ()
     "In dired, open the file named on this line."
     (interactive)
     (let* ((file (dired-get-filename nil t)))
       (call-process "xdg-open" nil 0 nil file)))
-  (setq dired-listing-switches "-alGhvF --group-directories-first"))   
+  (setq dired-listing-switches "-alGhvF --group-directories-first"))
+
 
 (use-package dired-x
   :config
