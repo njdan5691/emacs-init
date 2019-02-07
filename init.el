@@ -59,6 +59,13 @@
   :defer t
   :ensure t)
 
+;; displays the key bindings following your currently entered incomplete command
+(use-package which-key
+  :ensure t
+  :init
+  (setq which-key-side-window-max-height 0.40)
+  (which-key-mode))
+
 (use-package quelpa-use-package
   :defer t
   :ensure t
@@ -113,12 +120,7 @@
       :browser 'eww-browse-url)
     (engine-mode 1)))
 
-;; displays the key bindings following your currently entered incomplete command
-(use-package which-key
-  :ensure t
-  :init
-  (setq which-key-side-window-max-height 0.40)
-  (which-key-mode))
+
 
 ;; Package Graveyard, packages I no longer use.
 
