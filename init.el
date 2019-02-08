@@ -314,10 +314,7 @@
   :ensure t
   :mode "\\.lua\'"
   :config
-  (setq lua-indent-level 2)
-  (add-hook 'lua-mode-hook
-            (lambda ()
-              (global-hl-line-mode -1))))
+  (setq lua-indent-level 2))
 
 (use-package recentf-ext
   :ensure t
@@ -345,7 +342,6 @@
       (delete-trailing-whitespace)
       (shell-command-on-region (point-min) (point-max) cmd (buffer-name))))
   (defun my-c-mode-hook ()
-    (global-hl-line-mode -1)
     (abbrev-mode -1)
     (setq-local eldoc-echo-area-use-multiline-p t)
     (setq c-basic-offset 2
@@ -384,7 +380,7 @@ If the input is non-empty, it is inserted at point."
   :ensure nil
   :config
   (set-face-background 'hl-line "darkgreen")
-  :hook (after-init . global-hl-line-mode))
+  :hook (dired-mode . hl-line-mode))
 
 (use-package eldoc
   :diminish eldoc-mode)
