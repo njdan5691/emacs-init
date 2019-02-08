@@ -55,9 +55,10 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(use-package diminish                                                                                                  
-  :defer t
-  :ensure t)
+(eval-when-compile
+  (require 'use-package))
+(require 'diminish)
+(require 'bind-key)
 
 ;; displays the key bindings following your currently entered incomplete command
 (use-package which-key
@@ -74,11 +75,6 @@
     (setq quelpa-update-melpa-p nil))
 
 (require 'quelpa-use-package)
-
-(eval-when-compile
-  (require 'use-package)
-  (require 'diminish)
-  (require 'bind-key))
 
 ;; Since I almost never use C-l to recenter my emacs session,
 ;; I repurpose C-l as prefix, so I can bind some of my more frequently
