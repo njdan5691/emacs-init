@@ -553,7 +553,16 @@ If the input is non-empty, it is inserted at point."
 ;; by default.
 (put 'downcase-region 'disabled nil)
 
-(bind-key "<f10>" 'xterm-mouse-mode)                                                                
+(bind-key "<f10>" 'xterm-mouse-mode)  
+
+;; (defun counsel-locate-action-extern (x)
+;;   "Use xdg-open shell command on X."
+;;   (call-process shell-file-name nil
+;;                 nil nil
+;;                 shell-command-switch
+;;                 (format "xdg-open %s"
+;;                         (shell-quote-argument x))))
+
 
 (defun display-startup-echo-area-message ()
   (message "Initialization Completed"))
