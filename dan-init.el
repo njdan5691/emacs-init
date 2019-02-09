@@ -338,6 +338,7 @@
       (delete-trailing-whitespace)
       (shell-command-on-region (point-min) (point-max) cmd (buffer-name))))
   (defun my-c-mode-hook ()
+    (electric-pair-mode t)
     (abbrev-mode -1)
     (setq-local eldoc-echo-area-use-multiline-p t)
     (setq fill-mode 80
