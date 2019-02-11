@@ -27,6 +27,7 @@
  inhibit-splash-screen t
  initial-scratch-message nil
  package--init-file-ensured t
+ initial-major-mode 'ielm
  enable-local-variables :all
  user-emacs-directory (expand-file-name "~/.emacs.d")
  save-interprogram-paste-before-kill t
