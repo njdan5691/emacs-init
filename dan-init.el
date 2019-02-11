@@ -322,7 +322,28 @@
   :ensure t
   :defer t)
 
+(use-package web-mode
+  :ensure t
+  :mode ("\\.html$")
+  :bind (("C-l m" . zz:toggle-javascript-web-mode))
+  :config
+  (defun zz:toggle-javascript-web-mode ()
+    (interactive)
+    (cond ((string= "js-mode" major-mode)
+           (with-current-buffer (current-buffer)
+             (web-mode)))
+          ((string= "web-mode" major-mode)
+           (with-current-buffer (current-buffer)
+             (js-mode)))))
+  (add-hook 'web-mode-hook 'electric-pair-mode))
+
 ;; Configuration for packages that are part of emacs installation
+
+(use-package js
+  :ensure nil
+  :defer t
+  :config
+  (setq js-indent-level 2))
 
 (use-package cc-mode
   :ensure auto-complete
