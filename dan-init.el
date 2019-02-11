@@ -212,6 +212,11 @@
   :bind (([remap kill-ring-save] . easy-kill))
   :bind (([remap mark-paragraph] . easy-mark)))  
 
+(use-package dired-efap
+  :ensure t
+  :defer t
+  :bind (:map dired-mode-map ("r" . dired-efap)))
+
 (use-package smex
   :ensure t
   :after ivy
