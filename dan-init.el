@@ -325,17 +325,16 @@
 (use-package web-mode
   :ensure t
   :mode ("\\.html$")
-  :bind (("C-l m" . zz:toggle-javascript-web-mode))
   :config
-  (defun zz:toggle-javascript-web-mode ()
-    (interactive)
-    (cond ((string= "js-mode" major-mode)
-           (with-current-buffer (current-buffer)
-             (web-mode)))
-          ((string= "web-mode" major-mode)
-           (with-current-buffer (current-buffer)
-             (js-mode)))))
-  (add-hook 'web-mode-hook 'electric-pair-mode))
+  (defun zz:web-mode-hook ()
+    ""
+    (setq web-mode-script-padding 0)
+    (setq web-mode-markup-indent-offset 2)
+    (setq web-mode-css-indent-offset 2)
+    (setq web-mode-code-indent-offset 2)
+    (setq web-mode-indent-style 2))
+  (add-hook 'web-mode-hook 'electric-pair-mode)
+  (add-hook 'web-mode-hook 'zz:web-mode-hook))
 
 ;; Configuration for packages that are part of emacs installation
 
