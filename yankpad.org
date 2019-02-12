@@ -1,0 +1,82 @@
+* c-mode
+** Function Comment
+	 // Brief Function Description
+	 //
+	 // @param param description
+	 //
+	 // Full Function Description
+	 //
+	 // @return     Return Values
+	 //
+	 $0
+
+** File Comment
+	 // -*- compile-command: "nmake ../../../3b2/bin/command"; -*-
+	 // -*- compile-command: "nmake -f tools.mk ../../../3b2/bin/command" -*-
+	 // -*- compile-command: "nmake -f util.mk ../../../3b2/lib/libutillib.sl"; -*-
+
+	 /// @file `(file-name-nondirectory (buffer-file-name))`
+	 /// @brief
+	 /// @author  Dan Nuzzo
+	 ///
+
+** include
+#ifndef `(file-name-nondirectory (buffer-file-name))`_include
+#define `(file-name-nondirectory (buffer-file-name))`_include
+#endif
+** main
+	 int main(int argc, char **argv)
+	 {
+   		$0
+   		return 0;
+	 }
+** compile
+	 // -*- compile-command: (concat nmake-command " -f makefile.mk ../../../3b2/bin/progname"); -*-
+	 // -*- compile-command: (concat nmake-command " ../../../3b2/bin/progname"); -*-
+	 // -*- compile-command: (concat nmake-command " -f makefile.mk  ../../../3b2/lib/liblibname." shared-lib-ext); -*-
+** getopts
+
+	 #include <getopts.h>
+
+	 int opt;
+	 char *args;
+
+	enum
+	{
+		OP_TRACE=(1),
+		OP_ARG1,
+		OP_ARG2,
+		OP_MAX
+	};
+
+	struct options opts[] =
+	{
+		{ OP_TRACE, 1, "t", "trace",		   "Set traceLevel"},
+		{ OP_ARG1, 1,   0, "arg1",		   	"Match on Path"},
+		{ OP_ARG2, 0, "x", "arg2",		 	"Rebuild Database"},
+		{ 0, 0, NULL,NULL,NULL }
+	};
+
+	while (0 != (opt=getopts(argc,argv,opts,&args)))
+	{
+		switch (opt)
+		{
+		case -2:
+			printf("Unknown Option: %s\n", args);
+			exit (2);
+		case -1:
+			printf("Unabled to allocate memory from getopts().\n");
+			exit (2);
+		case OP_TRACE:
+			Trace = atoi(args);
+			break;
+		case OP_ARG2:
+			dtype = atoi(args);
+			break;
+		case OP_ARG1:
+			break;
+		default:
+			exit (2);
+		}
+		free(args);
+	}
