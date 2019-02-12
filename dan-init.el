@@ -366,6 +366,7 @@
   (defun my-c-mode-hook ()
     (electric-pair-mode t)
     (abbrev-mode -1)
+    (c-toggle-comment-style nil)
     (setq-local eldoc-echo-area-use-multiline-p t)
     (setq fill-mode 80
           c-basic-offset 2
