@@ -369,11 +369,12 @@
     (c-toggle-comment-style nil)
     (setq-local eldoc-echo-area-use-multiline-p t)
     (setq fill-mode 80
+          yankpad-category "c-mode"
           c-basic-offset 2
-          c-default-style "linux")
-    (setq comment-start "// "
+          comment-start "// "
           comment-end ""
-          show-trailing-whitespace t)
+          show-trailing-whitespace t
+          c-default-style "linux")
     (c-toggle-auto-state 1)
     (c-toggle-hungry-state 1)
     (setq ac-sources (delete 'ac-source-dictionary ac-sources))
