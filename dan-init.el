@@ -181,8 +181,9 @@
   :bind
   (
    :map global-map
+   ("C-c y" . zz:select-snippet)
    :prefix-map zz:yankpad-prefix
-   :prefix "C-c y"
+   :prefix "C-c Y"
    ("a" . yankpad-append-category)
    ("e" . yankpad-edit)
    ("m" . yankpad-map)
