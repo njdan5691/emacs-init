@@ -56,6 +56,10 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(use-package diminish
+  :ensure t
+  :defer t)
+
 (eval-when-compile
   (require 'use-package))
 (require 'diminish)
