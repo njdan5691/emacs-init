@@ -212,16 +212,21 @@
           (message (concat "No snippet named " name))))))
   :ensure ivy)
 
-(use-package easy-kill
+(use-package major-mode-hydra
   :ensure t
-  :defer t
-  :bind (([remap kill-ring-save] . easy-kill))
-  :bind (([remap mark-paragraph] . easy-mark)))  
+  :bind
+  ("<f9>" . major-mode-hydra))
 
 (use-package dired-efap
   :ensure t
   :defer t
   :bind (:map dired-mode-map ("r" . dired-efap)))
+
+(use-package easy-kill
+  :ensure t
+  :defer t
+  :bind (([remap kill-ring-save] . easy-kill))
+  :bind (([remap mark-paragraph] . easy-mark)))  
 
 (use-package smex
   :ensure t
