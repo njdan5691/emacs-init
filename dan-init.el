@@ -107,7 +107,6 @@
 (use-package engine-mode
   ;; default keymap is bound to "C-x /"
   :ensure t
-  :defer t
   :config
   (require 'format-spec)
   (progn
