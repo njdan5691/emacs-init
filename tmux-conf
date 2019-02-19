@@ -1,0 +1,62 @@
+unbind C-b
+set -g prefix 'C-t'
+bind 'C-t' send-prefix
+
+set-option -g mouse on
+
+# make scrolling with wheels work
+bind -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft= '#{pane_in_mode}' 'send-keys -M' 'select-pane -t=; copy-mode -e; send-keys -M'"
+bind -n WheelDownPane select-pane -t= \; send-keys -M
+
+# I really never use the status window, lets try not having one
+#set -g status off
+set -g set-titles on
+#set -g set-titles-string '#(whoami)@#h'
+set -g set-titles-string '#T'
+set -g status-position top
+set -g status-right ''
+#set -g set-titles-string '#(whoami)::#h::#(curl ipecho.net/plain;echo)'
+
+bind R source-file ~/.tmux.conf
+bind | split-window -h
+bind - split-window -v
+bind 'r' respawn-window
+bind w choose-tree -N -w
+unbind '"'
+unbind %
+#set-option status-left-length 20
+set -g status-left-length 30
+new -n "Main" -s "Main"
+splitw -h -p 35
+#neww -n "Emacs"
+neww -n "linc0" "ssh root@linc06"
+selectp -t 0
+splitw -h -p 50 "ssh root@linc07"
+selectp -t 0
+splitw -v -p 50 "ssh root@linc08"
+selectp -t 2
+splitw -v -p 50 "ssh root@linc09"
+selectp -t 0    # go back to the first pane
+
+neww -n "linc04" "ssh root@linc04vm1"
+neww -n "linc10" "ssh root@linc10vm1"
+neww -n "linc11" "ssh root@linc11vm1"
+neww -n "nf120/nf130" "ssh root@nf120"
+selectp -t 0
+splitw -h -p 50 "ssh root@nf120"
+selectp -t 0
+splitw -v -p 50 "ssh root@nf130"
+selectp -t 2
+splitw -v -p 50 "ssh root@nf130"
+selectp -t 0    # go back to the first pane
+neww -n "incbuild" "ssh incbuild@linc06"
+splitw -p 50 "ssh incbuild@unique2"
+neww -n "home" "ssh dan@73.195.16.253"
+selectw -t 0
+
+#neww -n "incbuild@unique2" "ssh incbuild@unique2"
+#neww -n "dan@linc07" "ssh dan@linc07"
+#neww -n "root@inc200" "ssh root@inc200"
+#neww -n "dan@sinc1000" "ssh dan@sinc1000"
+
+set -g remain-on-exit on
