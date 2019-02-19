@@ -100,6 +100,10 @@
          ("C-c t" . elispm:toggle-tab-width))
   :quelpa (elisp-misc :fetcher github :repo "njdan5691/elisp-misc"))
 
+(use-package ps-ccrypt
+  :ensure t
+  :quelpa (ps-ccrypt :fetcher github :repo "njdan5691/ps-ccrypt"))
+
 (use-package engine-mode
   ;; default keymap is bound to "C-x /"
   :ensure t
