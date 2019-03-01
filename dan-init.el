@@ -448,12 +448,13 @@ If the input is non-empty, it is inserted at point."
 
 (use-package dired
   :defer t
-  :ensure nil
+  :ensure dired-efap
   :commands (dired-dwim-target-directory)
   :bind (("C-l D" . find-name-dired)
          ("C-c o" . zz:dired-open-file)
          ("C-c C-o" . dired-omit-mode)
          :map dired-mode-map
+         ("r" . dired-efap
          ("s" . zz:dired-switch-edit))
   :config
   (defun zz:dired-switch-edit ()
