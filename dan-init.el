@@ -454,7 +454,7 @@ If the input is non-empty, it is inserted at point."
          ("C-c o" . zz:dired-open-file)
          ("C-c C-o" . dired-omit-mode)
          :map dired-mode-map
-         ("r" . dired-efap
+         ("r" . dired-efap)
          ("s" . zz:dired-switch-edit))
   :config
   (defun zz:dired-switch-edit ()
