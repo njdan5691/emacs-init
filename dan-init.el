@@ -570,7 +570,7 @@ If the input is non-empty, it is inserted at point."
   :ensure nil
   :bind (("C-l c" . compile))
   :config
-  (setq nmake-command "nmake"
+  (setq nmake-command "linc06nmake"
         compilation-last-buffer nil
         compilation-skip-threshold 2))
 
