@@ -246,7 +246,8 @@
   :ensure t
   :config
   (setq ivy-use-virtual-buffers t)
-  (setq  counsel-grep-base-command "ag --nocolor %s %s")
+  (setq counsel-grep-base-command
+      "rg -i -M 120 --no-heading --line-number --color never %s %s")
   (setq ivy-count-format "(%d/%d) ")
   :bind (("C-s" . swiper)
          ("C-r" . swiper)
