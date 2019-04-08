@@ -246,6 +246,7 @@
   :ensure t
   :config
   (setq ivy-use-virtual-buffers t)
+  (setq counsel-grep-swiper-limit 600000)
   (setq counsel-grep-base-command
       "rg -i -M 120 --no-heading --line-number --color never %s %s")
   (setq ivy-count-format "(%d/%d) ")
