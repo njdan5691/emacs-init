@@ -610,5 +610,14 @@ If the input is non-empty, it is inserted at point."
 ;;                         (shell-quote-argument x))))
 
 
+(defun select-all ()
+  (interactive)
+  (mark-whole-buffer)
+  (kill-ring-save (mark) (point)))
+
+(global-set-key (kbd "M-a") 'select-all)
+
+
+
 (defun display-startup-echo-area-message ()
   (message "Initialization Completed"))
