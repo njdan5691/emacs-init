@@ -300,6 +300,13 @@
   :ensure t
   :defer t)
 
+(use-package julia-mode
+  :ensure t
+  :defer t
+  :magic ("#!/usr/bin/julia" . julia-mode))
+
+
+
 (use-package counsel
   :ensure t
   :bind (("C-s" . counsel-grep-or-swiper)
