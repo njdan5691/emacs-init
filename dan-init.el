@@ -303,9 +303,7 @@
 (use-package julia-mode
   :ensure t
   :defer t
-  :magic ("#!/usr/bin/julia" . julia-mode))
-
-
+  :interpreter ("julia" . julia-mode))
 
 (use-package counsel
   :ensure t
