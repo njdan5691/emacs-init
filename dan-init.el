@@ -340,8 +340,7 @@
   (setq lua-indent-level 2))
 
 (use-package recentf-ext
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package web-mode
   :ensure t
@@ -555,7 +554,7 @@ If the input is non-empty, it is inserted at point."
                             ".*-autoloads\.el\'"
                             "[/\]\elpa/"))
     (setq recentf-save-file (expand-file-name "recentf" user-emacs-directory)
-          recentf-max-saved-items 15)))
+          recentf-max-saved-items 115)))
 
 (use-package shell
   :ensure nil
