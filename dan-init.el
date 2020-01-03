@@ -500,7 +500,8 @@ If the input is non-empty, it is inserted at point."
 (use-package simple
   :ensure nil
   :bind (("<f2>" . shell-command)
-         ("M-2" . shell-command))
+         ("M-2" . shell-command)
+         ("M-a" . mark-whole-buffer))
   :config
   (add-hook 'before-save-hook 'delete-trailing-whitespace))
 
@@ -614,12 +615,13 @@ If the input is non-empty, it is inserted at point."
 ;;                         (shell-quote-argument x))))
 
 
-(defun select-all ()
-  (interactive)
-  (mark-whole-buffer)
-  (kill-ring-save (mark) (point)))
 
-(global-set-key (kbd "M-a") 'select-all)
+;; (defun select-all ()
+;;   (interactive)
+;;   (mark-whole-buffer)
+;;   (kill-ring-save (mark) (point)))
+
+
 
 
 (let ((file (expand-file-name "macros.el" user-emacs-directory))
