@@ -98,12 +98,7 @@
          ("C-c C-k" . elispm:kill-other-buffers)
          ("C-l a" . elispm:ask-emacs)
          ("C-c t" . elispm:toggle-tab-width))
-  :quelpa (elisp-misc :fetcher github :repo "njdan5691/elisp-misc"))
-
-(use-package ps-ccrypt
-  :ensure t
-  :quelpa (ps-ccrypt :fetcher github :repo "njdan5691/ps-ccrypt"))
-
+  :quelpa (elisp-misc :fetcher url :url "https://raw.githubusercontent.com/njdan5691/elisp-misc/master/elisp-misc.el"))
 
 ;; Package Graveyard, packages I no longer use.
 
@@ -182,6 +177,10 @@
 ;;       :keybinding "d"
 ;;       :browser 'eww-browse-url)
 ;;     (engine-mode 1)))
+
+;; (use-package ps-ccrypt
+;;   :ensure t
+;;   :quelpa (ps-ccrypt :fetcher github :repo "njdan5691/ps-ccrypt"))
 
 
 
