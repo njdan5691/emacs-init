@@ -104,28 +104,6 @@
   :ensure t
   :quelpa (ps-ccrypt :fetcher github :repo "njdan5691/ps-ccrypt"))
 
-(use-package engine-mode
-  ;; default keymap is bound to "C-x /"
-  :ensure t
-  :config
-  (require 'format-spec)
-  (progn
-    (setq engine/browser-function 'eww-browser-url)
-    (defengine google
-      "https://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"
-      :keybinding "g"
-      :browser 'eww-browse-url)
-    (defengine gist-github
-      "https://gist.github.com/search?utf=1&&q=%s"
-      :keybinding "G"
-      :browser 'eww-browse-url)
-    (defengine dicionary
-      "https://www.wikipedia.org/search-redirect.php?family=wiktionary&language=en&go=Go&search=%s"
-      :keybinding "d"
-      :browser 'eww-browse-url)
-    (engine-mode 1)))
-
-
 
 ;; Package Graveyard, packages I no longer use.
 
@@ -183,6 +161,29 @@
 ;;  :init
 ;;  (progn
 ;;    (setq org-startup-truncated nil)))
+
+;; (use-package engine-mode
+;;   ;; default keymap is bound to "C-x /"
+;;   :ensure t
+;;   :config
+;;   (require 'format-spec)
+;;   (progn
+;;     (setq engine/browser-function 'eww-browser-url)
+;;     (defengine google
+;;       "https://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"
+;;       :keybinding "g"
+;;       :browser 'eww-browse-url)
+;;     (defengine gist-github
+;;       "https://gist.github.com/search?utf=1&&q=%s"
+;;       :keybinding "G"
+;;       :browser 'eww-browse-url)
+;;     (defengine dicionary
+;;       "https://www.wikipedia.org/search-redirect.php?family=wiktionary&language=en&go=Go&search=%s"
+;;       :keybinding "d"
+;;       :browser 'eww-browse-url)
+;;     (engine-mode 1)))
+
+
 
 (use-package yankpad
   :ensure t
