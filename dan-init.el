@@ -622,6 +622,11 @@ If the input is non-empty, it is inserted at point."
 (global-set-key (kbd "M-a") 'select-all)
 
 
+(let ((file (expand-file-name "macros.el" user-emacs-directory))
+      (url "https://raw.githubusercontent.com/njdan5691/emacs-init/master/macros.el"))
+  (unless (file-exists-p file)
+    (url-copy-file url file)))
+
 
 (defun display-startup-echo-area-message ()
   (message "Initialization Completed"))
