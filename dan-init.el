@@ -656,6 +656,7 @@ If the input is non-empty, it is inserted at point."
                  :map dired-mode-map
                  ("C-c d" . idev:dired-sdiff)
                  ("C-c p" . idev:dired-edput)
+                 ("C-c e" . idev:dired-edget)
                  ("C-c s" . idev:dired-sget)
                                                  ("C-l c" . compile)       
    
