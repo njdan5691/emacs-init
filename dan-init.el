@@ -183,42 +183,44 @@
 ;;   :quelpa (ps-ccrypt :fetcher github :repo "njdan5691/ps-ccrypt"))
 
 
+;; (use-package yankpad
+;;   :ensure t
+;;   :bind
+;;   (
+;;    :map global-map
+;;    ("C-c y" . zz:select-snippet)
+;;    :prefix-map zz:yankpad-prefix
+;;    :prefix "C-c Y"
+;;    ("a" . yankpad-append-category)
+;;    ("e" . yankpad-edit)
+;;    ("m" . yankpad-map)
+;;    ("c" . yankpad-capture-snippet)
+;;    ("x" . zz:select-snippet)
+;;    ("r" . yankpad-reload)
+;;    ("i" . yankpad-insert)
+;;    ("s" . yankpad-set-category))
+;;   :init
+;;   (setq yankpad-file (expand-file-name "~/.emacs.d/yankpad.org"))
+;;   :config
+;;   (defun zz:select-snippet ()
+;;     (interactive)
+;;     (unless yankpad-category
+;;       (or (yankpad-local-category-to-major-mode)
+;;           (yankpad-set-category)))
+;;     (let ((name (ivy-read "Snippet:" (yankpad-active-snippets))))
+;;       (let ((snippet (assoc name (yankpad-active-snippets))))
+;;         (if snippet
+;;             (yankpad--run-snippet snippet)
+;;           (message (concat "No snippet named " name))))))
+;;   :ensure ivy)
 
-(use-package yankpad
-  :ensure t
-  :bind
-  (
-   :map global-map
-   ("C-c y" . zz:select-snippet)
-   :prefix-map zz:yankpad-prefix
-   :prefix "C-c Y"
-   ("a" . yankpad-append-category)
-   ("e" . yankpad-edit)
-   ("m" . yankpad-map)
-   ("c" . yankpad-capture-snippet)
-   ("x" . zz:select-snippet)
-   ("r" . yankpad-reload)
-   ("i" . yankpad-insert)
-   ("s" . yankpad-set-category))
-  :init
-  (setq yankpad-file (expand-file-name "~/.emacs.d/yankpad.org"))
-  :config
-  (defun zz:select-snippet ()
-    (interactive)
-    (unless yankpad-category
-      (or (yankpad-local-category-to-major-mode)
-          (yankpad-set-category)))
-    (let ((name (ivy-read "Snippet:" (yankpad-active-snippets))))
-      (let ((snippet (assoc name (yankpad-active-snippets))))
-        (if snippet
-            (yankpad--run-snippet snippet)
-          (message (concat "No snippet named " name))))))
-  :ensure ivy)
+;; (use-package major-mode-hydra
+;;   :ensure t
+;;   :bind
+;;   ("<f9>" . major-mode-hydra))
 
-(use-package major-mode-hydra
-  :ensure t
-  :bind
-  ("<f9>" . major-mode-hydra))
+
+
 
 (use-package dired-efap
   :ensure t
