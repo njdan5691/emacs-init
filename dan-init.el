@@ -640,6 +640,15 @@ If the input is non-empty, it is inserted at point."
   (unless (file-exists-p file)
     (url-copy-file url file)))
 
+
+(let ((file (expand-file-name "Hints.txt" user-emacs-directory))
+      (url "https://raw.githubusercontent.com/njdan5691/emacs-init/master/Hints.txt"))
+  (unless (file-exists-p file)
+    (url-copy-file url file)))
+
+
+
+
 ;; (let ((file (expand-file-name "yankpad.org" user-emacs-directory))
 ;;       (url "https://raw.githubusercontent.com/njdan5691/emacs-init/master/yankpad.org"))
 ;;   (unless (file-exists-p file)
