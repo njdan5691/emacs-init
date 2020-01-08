@@ -575,7 +575,9 @@ If the input is non-empty, it is inserted at point."
 
 (use-package compile
   :ensure nil
-  :bind (("C-l c" . compile))
+  :bind (:map zz:my-prefix
+              ("c" . compile))
+
   :config
   (setq nmake-command "linc06nmake"
         compilation-last-buffer nil
@@ -583,7 +585,8 @@ If the input is non-empty, it is inserted at point."
 
 (use-package apropos
   :ensure nil
-  :bind (("C-c a" . apropos-command))) 
+  :bind (:map zz:my-prefix
+              ("a" . counsel-apropos))) 
 
 (use-package files
   :ensure nil
