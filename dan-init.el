@@ -299,7 +299,7 @@
          ("C-x r b" . counsel-bookmark)
          ("C-h f" . counsel-describe-function)
          ("C-x C-r" . counsel-recentf)
-         ("C-x j" . ivy-kill-line))
+         ("C-x j" . ivy-kill-line)
          ("C-h s" . counsel-set-variable)
          ("C-h f" . counsel-describe-function))
   :config (setq ivy-use-virtual-buffers t))     
