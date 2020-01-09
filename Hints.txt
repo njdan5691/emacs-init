@@ -8,6 +8,10 @@ C-c g       | ggtags prefix key
 M-y         | yank pop
 M-7,<f7>    | copy to register
 M-8,<f8>    | insert-register
+C-c r       | replace string
+C-c R       | replace regular expression
+C-c q       | query replace
+C-c q       | query replace expression
 
 cc mode
 
