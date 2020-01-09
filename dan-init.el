@@ -94,14 +94,13 @@
 
 (use-package elisp-misc
   :ensure t
-  :bind (("C-c TAB" . elispm:reformat-buffer)
-         ("C-c C-k" . elispm:kill-other-buffers)
-         ("C-l a" . elispm:ask-emacs)
-         ("C-l h" . elispm:find-file-hints)
-         ("C-c t" . elispm:toggle-tab-width))
+  :bind (:map zz:my-prefix
+              ("TAB" . elispm:reformat-buffer)
+              ("k" . elispm:kill-other-buffers)
+              ("h" . elispm:find-file-hints)
+              ("t" . elispm:toggle-tab-width))
+
   :quelpa (elisp-misc :fetcher url :url "https://raw.githubusercontent.com/njdan5691/elisp-misc/master/elisp-misc.el"))
-
-
 
 (use-package dired-efap
   :ensure t
