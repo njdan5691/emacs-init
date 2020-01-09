@@ -32,12 +32,12 @@
  user-emacs-directory (expand-file-name "~/.emacs.d")
  save-interprogram-paste-before-kill t
  blink-cursor-mode -1
- ring-bell-function 'ignore                                                                     
+ ring-bell-function 'ignore
  backward-delete-char-untabify-method 'hungry
  create-lockfiles nil
  apropos-do-all t)
 
-(require 'package)                                                                                  
+(require 'package)
 (setq package-enable-at-startup nil)
 
 (setq package-archives
@@ -142,11 +142,11 @@
 
 ;;(use-package eshell
 ;;  :config
-;;  (setq eshell-prompt-function                                                                      
+;;  (setq eshell-prompt-function
 ;;        (lambda nil " $ "))
 ;;  (setenv "PAGER" "cat"))
 
-;; (use-package csv-mode                                                                               
+;; (use-package csv-mode
 ;;   :mode "\\.csv\\'"
 ;;   :ensure t)
 
@@ -231,7 +231,7 @@
   :ensure t
   :defer t
   :bind (([remap kill-ring-save] . easy-kill))
-  :bind (([remap mark-paragraph] . easy-mark)))  
+  :bind (([remap mark-paragraph] . easy-mark)))
 
 (use-package smex
   :ensure t
@@ -242,7 +242,7 @@
 (use-package aggressive-indent
   :ensure t
   :hook (c-mode-common . aggressive-indent-mode)
-  :diminish aggressive-indent-mode)   
+  :diminish aggressive-indent-mode)
 
 (use-package swiper
   :ensure t
@@ -274,7 +274,7 @@
                :prefix-map zz:ggtags-prefix
                :prefix "C-c g")
 
-    (setq ggtags-use-sqlite3 1)                                                                     
+    (setq ggtags-use-sqlite3 1)
     (setq-local imenu-create-index-function #'ggtags-build-imenu-index)
     (add-hook 'dired-mode
               (lambda ()
@@ -302,7 +302,7 @@
          ("C-x j" . ivy-kill-line)
          ("C-h s" . counsel-set-variable)
          ("C-h f" . counsel-describe-function))
-  :config (setq ivy-use-virtual-buffers t))     
+  :config (setq ivy-use-virtual-buffers t))
 
 (use-package markdown-mode
   :ensure t
@@ -486,17 +486,17 @@ If the input is non-empty, it is inserted at point."
   :config
   (progn
     (setq dired-omit-verbose nil)
-    (setq dired-omit-files "^\\.[^.]\\|\\.ms$\\|\\.o$")                                                              
+    (setq dired-omit-files "^\\.[^.]\\|\\.ms$\\|\\.o$")
     (add-hook 'dired-mode-hook #'dired-omit-mode)))
 
 (use-package minibuffer
   :ensure nil
   :config
-  (setq history-length 2300                                                                         
+  (setq history-length 2300
         enable-recursive-minibuffers t
         history-delete-duplicates t))
 
-(use-package grep                                                                                   
+(use-package grep
   :defer t
   :ensure nil
   :bind (("<f4>" . grep)
@@ -549,7 +549,7 @@ If the input is non-empty, it is inserted at point."
   :config
   (setq save-place-file (expand-file-name "places" user-emacs-directory)
         save-place-forget-unreadable-files nil
-        save-place-limit 60)                                                                        
+        save-place-limit 60)
   :init
   (save-place-mode))
 
@@ -594,7 +594,7 @@ If the input is non-empty, it is inserted at point."
 (use-package apropos
   :ensure nil
   :bind (:map zz:my-prefix
-              ("a" . counsel-apropos))) 
+              ("a" . counsel-apropos)))
 
 (use-package files
   :ensure nil
@@ -615,7 +615,7 @@ If the input is non-empty, it is inserted at point."
 ;; by default.
 (put 'downcase-region 'disabled nil)
 
-(bind-key "<f10>" 'xterm-mouse-mode)  
+(bind-key "<f10>" 'xterm-mouse-mode)
 
 ;; (defun counsel-locate-action-extern (x)
 ;;   "Use xdg-open shell command on X."
@@ -653,7 +653,7 @@ If the input is non-empty, it is inserted at point."
 ;;       (url "https://raw.githubusercontent.com/njdan5691/emacs-init/master/yankpad.org"))
 ;;   (unless (file-exists-p file)
 ;;     (url-copy-file url file)))
-                                                                                                                                                                                                                                           
+
 (if (file-directory-p "/home/dan/inc")
     (use-package idev
       ;;:disabled
@@ -678,8 +678,8 @@ If the input is non-empty, it is inserted at point."
                  ("C-c p" . idev:dired-edput)
                  ("C-c e" . idev:dired-edget)
                  ("C-c s" . idev:dired-sget)
-                                                 ("C-l c" . compile)       
-   
+                                                 ("C-l c" . compile)
+
                  :prefix-map idev-project-prefix
                  :prefix "P"
                  ("m" . idev:make-project)
