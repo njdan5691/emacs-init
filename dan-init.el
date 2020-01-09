@@ -69,7 +69,7 @@
 (use-package which-key
   :ensure t
   :init
-  (setq which-key-side-window-max-height 0.40)
+  (setq which-key-side-window-max-height 0.50)
   (which-key-mode))
 
 (use-package quelpa-use-package
@@ -196,8 +196,7 @@
 
 (use-package counsel
   :ensure t
-  :bind (("C-s" . counsel-grep-or-swiper)
-         ("C-x C-r" . counsel-recentf))
+  :bind (("C-s" . counsel-grep-or-swiper))
   :requires swiper)
 
 (use-package auto-complete
