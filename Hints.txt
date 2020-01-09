@@ -5,6 +5,8 @@ C-c C-k     | will kill all other buffers
 C-c t       | will toggle tab with 1/2/4/6/8
 C-c g       | ggtags prefix key
 M-y         | yank pop
+M-7,<f7>    | copy to register
+M-8,<f8>    | insert-register
 
 cc mode
 
