@@ -1,1 +1,5 @@
 No Hints Yet
+
+C-c TAB     | will reformat the buffer
+C-c C-k     | will kill all other buffers
+C-c t       | will toggle tab with 1/2/4/6/8
