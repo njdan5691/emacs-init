@@ -116,3 +116,10 @@
 ;;   :ensure t
 ;;   :bind
 ;;   ("<f9>" . major-mode-hydra))
+
+;; (defun elispm:ask-emacs (&optional initial-input)
+;; 	"Search for a pattern in emacs 'info/' directory using ag.
+;;     INITIAL-INPUT can be given as the initial minibuffer input."
+;; 	(interactive)
+;; 	(counsel-rg initial-input (car Info-default-directory-list)
+;; 							" " "Ask Emacs:"))

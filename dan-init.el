@@ -548,5 +548,6 @@ If the input is non-empty, it is inserted at point."
             ("f" . idev:freeze-project)
             ("e" . idev:file-history))))
 
+
 (defun display-startup-echo-area-message ()
   (message "Initialization Completed"))
