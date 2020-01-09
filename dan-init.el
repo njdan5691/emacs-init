@@ -421,8 +421,9 @@ If the input is non-empty, it is inserted at point."
 
 (use-package isearch
   :ensure nil
-  :bind (("C-l C-s" . isearch-forward)
-         ("C-l C-r" . isearch-backward)))
+  :bind (:map zz:my-prefix
+              ("C-s" . isearch-forward)
+              ("C-r" . isearch-backward)))
 
 (use-package saveplace
   :ensure nil
@@ -449,7 +450,8 @@ If the input is non-empty, it is inserted at point."
 (use-package shell
   :ensure nil
   :defer t
-  :bind (("C-l $" . shell))
+  :bind (:map zz:my-prefix
+              ("$" . shell))
   :config
   (defun zz:comint-init()
     (setq comint-process-echoes t))
@@ -498,37 +500,16 @@ If the input is non-empty, it is inserted at point."
 
 (bind-key "<f10>" 'xterm-mouse-mode)
 
-;; (defun counsel-locate-action-extern (x)
-;;   "Use xdg-open shell command on X."
-;;   (call-process shell-file-name nil
-;;                 nil nil
-;;                 shell-command-switch
-;;                 (format "xdg-open %s"
-;;                         (shell-quote-argument x))))
-
-
-
-;; (defun select-all ()
-;;   (interactive)
-;;   (mark-whole-buffer)
-;;   (kill-ring-save (mark) (point)))
-
-
-
 
 (let ((file (expand-file-name "macros.el" user-emacs-directory))
       (url "https://raw.githubusercontent.com/njdan5691/emacs-init/master/macros.el"))
   (unless (file-exists-p file)
     (url-copy-file url file)))
 
-
 (let ((file (expand-file-name "Hints.txt" user-emacs-directory))
       (url "https://raw.githubusercontent.com/njdan5691/emacs-init/master/Hints.txt"))
   (unless (file-exists-p file)
     (url-copy-file url file)))
-
-
-
 
 ;; (let ((file (expand-file-name "yankpad.org" user-emacs-directory))
 ;;       (url "https://raw.githubusercontent.com/njdan5691/emacs-init/master/yankpad.org"))
