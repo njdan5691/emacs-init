@@ -6,10 +6,15 @@ C-c t       | will toggle tab with 1/2/4/6/8
 C-c g       | ggtags prefix key
 M-y         | yank pop
 
-cc-mode
+cc mode
 
 C-c z       | indent with gnu indent
 C-c x       | mark the current function
 M-.         | find tag
 M-?         | show definition
 M-,         | jump to previous mark
+
+dired mode
+
+C-c o       | use xdg-open to open file
+C-c C-o     | toggle omit mode
