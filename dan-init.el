@@ -171,14 +171,15 @@
 
 (use-package ivy
   :ensure t
+  :bind (:map zz:my-prefix
+              ("r" . counsel-recentf))
+
   :bind (("C-x b" . ivy-switch-buffer)
-         ("C-x j" . ivy-kill-line)
          ("C-h b" . counsel-descbinds)
          ("C-h v" . counsel-describe-variable)
          ("M-y" . counsel-yank-pop)
          ("C-x r b" . counsel-bookmark)
          ("C-h f" . counsel-describe-function)
-         ("C-x C-r" . counsel-recentf)
          ("C-x j" . ivy-kill-line)
          ("C-h s" . counsel-set-variable)
          ("C-h f" . counsel-describe-function))

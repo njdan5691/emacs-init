@@ -1,8 +1,9 @@
 No Hints Yet
 
-C-c TAB     | will reformat the buffer
-C-c C-k     | will kill all other buffers
-C-c t       | will toggle tab with 1/2/4/6/8
+C-l TAB     | will reformat the buffer
+C-l k       | will kill all other buffers
+C-l t       | will toggle tab with 1/2/4/6/8
+C-l h       | Navigate to this file
 C-c g       | ggtags prefix key
 M-y         | yank pop
 M-7,<f7>    | copy to register
