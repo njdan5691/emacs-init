@@ -189,9 +189,10 @@
          ("M-i" . counsel-imenu)
          ("M-x" . counsel-M-x)))
 
-(use-package counsel
-  :ensure t
-  :requires swiper)
+;;
+;; (use-package counsel
+;;   :ensure t
+;;   :requires swiper)
 
 (use-package markdown-mode
   :ensure t
