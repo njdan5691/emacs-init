@@ -169,10 +169,15 @@
   :defer t
   :requires swiper)
 
+(use-package magit
+  :bind (("C-x g" . magit-status))
+  :ensure t)
+
 (use-package ivy
   :ensure t
   :bind (:map zz:my-prefix
-              ("r" . counsel-recentf))
+              ("r" . counsel-rg)
+              ("R" . counsel-recentf))
 
   :bind (("C-x b" . ivy-switch-buffer)
          ("C-h b" . counsel-descbinds)
@@ -424,8 +429,7 @@ If the input is non-empty, it is inserted at point."
               ("C-s" . isearch-forward)
               ("C-r" . isearch-backward)))
 
-(use-package saveplace
-  :ensure nil
+(use-package saveplace  :ensure nil
   :defer t
   :config
   (setq save-place-file (expand-file-name "places" user-emacs-directory)
