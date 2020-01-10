@@ -124,19 +124,6 @@
   :hook (c-mode-common . aggressive-indent-mode)
   :diminish aggressive-indent-mode)
 
-(use-package swiper
-  :ensure t
-  :config
-  (setq ivy-use-virtual-buffers t)
-  (setq counsel-grep-swiper-limit 600000)
-  (setq counsel-grep-base-command
-        "rg -i -M 120 --no-heading --line-number --color never %s %s")
-  (setq ivy-count-format "(%d/%d) ")
-  :bind (("C-s" . swiper)
-         ("C-r" . swiper)
-         ("C-x C-f" . counsel-find-file)
-         ("M-i" . counsel-imenu)
-         ("M-x" . counsel-M-x)))
 
 (use-package ggtags
   :ensure t
@@ -179,16 +166,32 @@
               ("r" . counsel-rg)
               ("R" . counsel-recentf))
 
-  :bind (("C-x b" . ivy-switch-buffer)
-         ("C-h b" . counsel-descbinds)
-         ("C-h v" . counsel-describe-variable)
-         ("M-y" . counsel-yank-pop)
-         ("C-x r b" . counsel-bookmark)
-         ("C-h f" . counsel-describe-function)
-         ("C-x j" . ivy-kill-line)
-         ("C-h s" . counsel-set-variable)
-         ("C-h f" . counsel-describe-function))
+  :bind (([remap switch-to-buffer] . ivy-switch-buffer)
+         ([remap describe-function] . counsel-describe-function)
+         ([remap describe-variable] . counsel-describe-variable)
+         ([remap describe-bindings] . counsel-descbinds)
+         ([remap bookmark-jump] . counsel-bookmark)
+         ([remap yank-pop] . counsel-yank-pop)
+         ("C-h s" . counsel-set-variable))
   :config (setq ivy-use-virtual-buffers t))
+
+(use-package swiper
+  :ensure t
+  :config
+  (setq ivy-use-virtual-buffers t)
+  (setq counsel-grep-swiper-limit 600000)
+  (setq counsel-grep-base-command
+        "rg -i -M 120 --no-heading --line-number --color never %s %s")
+  (setq ivy-count-format "(%d/%d) ")
+  :bind (("C-s" . counsel-grep-or-swiper)
+         ("C-r" . counsel-grep-or-swiper)
+         ("C-x C-f" . counsel-find-file)
+         ("M-i" . counsel-imenu)
+         ("M-x" . counsel-M-x)))
+
+(use-package counsel
+  :ensure t
+  :requires swiper)
 
 (use-package markdown-mode
   :ensure t
@@ -198,11 +201,6 @@
   :ensure t
   :defer t
   :interpreter ("julia" . julia-mode))
-
-(use-package counsel
-  :ensure t
-  :bind (("C-s" . counsel-grep-or-swiper))
-  :requires swiper)
 
 (use-package auto-complete
   :ensure t
