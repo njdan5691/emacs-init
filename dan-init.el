@@ -348,12 +348,21 @@ If the input is non-empty, it is inserted at point."
   :defer t
   :ensure dired-efap
   :commands (dired-dwim-target-directory)
-  :bind (("C-l D" . find-name-dired)
-         ("C-c o" . zz:dired-open-file)
-         ("C-c C-o" . dired-omit-mode)
+  :bind (
          :map dired-mode-map
-         ("r" . dired-efap)
-         ("s" . zz:dired-switch-edit))
+              :prefix-map zz:my-dired-prefix
+              :prefix "z"
+              ("o" . dired-omit-mode)
+              ("x" . zz:dired-open-file)
+              ("d" . find-name-dired)
+              ("r" . dired-efap)
+              ("s" . zz:dired-switch-edit))
+  ;; :bind (("C-l D" . find-name-dired)
+  ;;        ("C-c o" . zz:dired-open-file)
+  ;;        ("C-c C-o" . dired-omit-mode)
+  ;;        :map dired-mode-map
+  ;;        ("r" . dired-efap)
+  ;;        ("s" . zz:dired-switch-edit))
   :config
   (defun zz:dired-switch-edit ()
     (interactive)
