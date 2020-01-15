@@ -124,7 +124,6 @@
   :hook (c-mode-common . aggressive-indent-mode)
   :diminish aggressive-indent-mode)
 
-
 (use-package ggtags
   :ensure t
   :defer t
@@ -357,12 +356,6 @@ If the input is non-empty, it is inserted at point."
               ("d" . find-name-dired)
               ("r" . dired-efap)
               ("s" . zz:dired-switch-edit))
-  ;; :bind (("C-l D" . find-name-dired)
-  ;;        ("C-c o" . zz:dired-open-file)
-  ;;        ("C-c C-o" . dired-omit-mode)
-  ;;        :map dired-mode-map
-  ;;        ("r" . dired-efap)
-  ;;        ("s" . zz:dired-switch-edit))
   :config
   (defun zz:dired-switch-edit ()
     (interactive)
