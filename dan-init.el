@@ -90,7 +90,7 @@
            ("C-l" . recenter))
 
 (global-unset-key (kbd "<f3>"))
-(global-unset-key (kbd "C-z"))
+(global-set-key (kbd "C-z")       'save-buffers-kill-emacs)
 
 (use-package elisp-misc
   :ensure t
@@ -185,7 +185,7 @@
   (setq ivy-count-format "(%d/%d) ")
   :bind (("C-s" . counsel-grep-or-swiper)
          ("C-r" . counsel-grep-or-swiper)
-         ("C-x C-f" . counsel-find-file)
+         ("C-l o" . counsel-find-file)
          ("M-i" . counsel-imenu)
          ("M-x" . counsel-M-x)))
 
@@ -454,6 +454,7 @@ If the input is non-empty, it is inserted at point."
     (setq recentf-exclude '("^/var/folders\.*"
                             "COMMIT_EDITMSG\'"
                             ".*-autoloads\.el\'"
+                            "/elpa/"
                             "[/\]\elpa/"))
     (setq recentf-save-file (expand-file-name "recentf" user-emacs-directory)
           recentf-max-saved-items 115)))
@@ -493,7 +494,8 @@ If the input is non-empty, it is inserted at point."
 (use-package files
   :ensure nil
   :bind (("C-l l" . load-file)
-         ("C-x C-o" . find-file))
+         ;("C-x C-o" . find-file)
+         )
   :config
   (progn
     (setq require-final-newline t
