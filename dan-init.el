@@ -185,6 +185,8 @@
   :bind (("C-s" . counsel-grep-or-swiper)
          ("C-r" . counsel-grep-or-swiper)
          ("C-l o" . counsel-find-file)
+         ("<f4>" . counsel-rg)
+         ("M-4" . counsel-rg)
          ("M-i" . counsel-imenu)
          ("M-x" . counsel-M-x)))
 
@@ -385,11 +387,14 @@ If the input is non-empty, it is inserted at point."
 (use-package grep
   :defer t
   :ensure nil
-  :bind (("<f4>" . grep)
-         ("M-4" . grep))
+  ;; :bind (("<f4>" . grep)
+  ;;        ("M-4" . grep))
   :config
   (setq grep-use-null-device nil)
-  (grep-apply-setting 'grep-command '("ag --depth 0 --vimgrep " . 24)))
+  ;;(grep-apply-setting 'grep-command '("rg --max-depth 1 --vimgrep " . 28))
+  (grep-apply-setting 'grep-command '("ag --depth 0 --vimgrep " . 24))
+  )
+
 
 (use-package simple
   :ensure nil
