@@ -185,8 +185,6 @@
   :bind (("C-s" . counsel-grep-or-swiper)
          ("C-r" . counsel-grep-or-swiper)
          ("C-l o" . counsel-find-file)
-         ("<f4>" . counsel-rg)
-         ("M-4" . counsel-rg)
          ("M-i" . counsel-imenu)
          ("M-x" . counsel-M-x)))
 
