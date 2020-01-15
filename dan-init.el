@@ -486,9 +486,7 @@ If the input is non-empty, it is inserted at point."
 
 (use-package files
   :ensure nil
-  :bind (("C-l l" . load-file)
-         ;("C-x C-o" . find-file)
-         )
+  :bind (("C-l l" . load-file))
   :config
   (progn
     (setq require-final-newline t
