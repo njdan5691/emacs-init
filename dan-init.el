@@ -523,7 +523,10 @@ If the input is non-empty, it is inserted at point."
 ;;   (unless (file-exists-p file)
 ;;     (url-copy-file url file)))
 
-(if (file-directory-p "/home/dan/inc")
+
+
+
+(if (file-directory-p (concat (getenv "HOME") "/inc"))
     (use-package idev
       ;;:disabled
       :defer t
