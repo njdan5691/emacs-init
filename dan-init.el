@@ -524,7 +524,12 @@ If the input is non-empty, it is inserted at point."
 ;;     (url-copy-file url file)))
 
 
-
+(if (file-directory-p (concat (getenv "HOME") "/incinstall"))
+    (let ((file (expand-file-name "incbuild-init.el" user-emacs-directory))
+          (url "https://raw.githubusercontent.com/njdan5691/emacs-init/master/incbuild-init.el"))
+      (unless (file-exists-p file)
+        (url-copy-file url file))
+      (load-file file)))
 
 (if (file-directory-p (concat (getenv "HOME") "/inc"))
     (use-package idev
