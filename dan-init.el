@@ -89,8 +89,10 @@
            :prefix "C-l"
            ("C-l" . recenter))
 
-(global-unset-key (kbd "C-x C-o"))
+
+
 (global-unset-key (kbd "<f3>"))
+(global-unset-key (kbd "C-x C-o"))
 (global-set-key (kbd "C-z")       'save-buffers-kill-emacs)
 
 (use-package elisp-misc
