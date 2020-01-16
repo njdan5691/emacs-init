@@ -1,4 +1,3 @@
-(message "Got inbuild-init")
 (defun ib:find-file-incnodes ()
 	(interactive)
 	(find-file "/home/incbuild/incnodes"))

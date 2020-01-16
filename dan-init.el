@@ -89,6 +89,7 @@
            :prefix "C-l"
            ("C-l" . recenter))
 
+(global-unset-key (kbd "C-x C-o"))
 (global-unset-key (kbd "<f3>"))
 (global-set-key (kbd "C-z")       'save-buffers-kill-emacs)
 
