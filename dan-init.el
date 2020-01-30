@@ -166,6 +166,7 @@
   :ensure t
   :bind (:map zz:my-prefix
               ("r" . counsel-rg)
+              ("f" . counsel-fzf)
               ("R" . counsel-recentf))
 
   :bind (([remap switch-to-buffer] . ivy-switch-buffer)
