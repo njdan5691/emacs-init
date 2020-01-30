@@ -89,8 +89,6 @@
            :prefix "C-l"
            ("C-l" . recenter))
 
-
-
 (global-unset-key (kbd "<f3>"))
 (global-unset-key (kbd "C-x C-o"))
 (global-set-key (kbd "C-z")       'save-buffers-kill-emacs)
@@ -101,9 +99,11 @@
               ("TAB" . elispm:reformat-buffer)
               ("k" . elispm:kill-other-buffers)
               ("h" . elispm:find-file-hints)
+              ("x" . elm:remove-lines)
               ("t" . elispm:toggle-tab-width))
 
-  :quelpa (elisp-misc :fetcher url :url "https://raw.githubusercontent.com/njdan5691/elisp-misc/master/elisp-misc.el"))
+  :quelpa (elisp-misc :fetcher url
+                      :url "https://raw.githubusercontent.com/njdan5691/elisp-misc/master/elisp-misc.el"))
 
 (use-package dired-efap
   :ensure t
@@ -565,8 +565,14 @@ If the input is non-empty, it is inserted at point."
             ("m" . idev:make-project)
             ("u" . idev:unfreeze-project)
             ("f" . idev:freeze-project)
-            ("e" . idev:file-history))))
+            ("e" . idev:file-history))
+      ))
 
 
 (defun display-startup-echo-area-message ()
   (message "Initialization Completed"))
+
+(defun elm:remove-lines (pattern &optional b e)
+  (interactive "*sPattern:\nr")
+  (save-excursion
+      (flush-lines pattern b e)))
