@@ -2,7 +2,6 @@
 ;;
 ;; Author: Daniel <njdan.5691@gmail.com>
 ;; Keywords: lisp
-;; Package-Version: 0.0.1pre0.20200130.82258
 ;; Version: 0.0.1
 
 ;;; Commentary:
