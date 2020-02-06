@@ -103,7 +103,8 @@
               ("t" . elispm:toggle-tab-width))
 
   :quelpa (elisp-misc :fetcher url
-                      :url "https://raw.githubusercontent.com/njdan5691/elisp-misc/master/elisp-misc.el"
+                      ;;:url "https://raw.githubusercontent.com/njdan5691/elisp-misc/master/elisp-misc.el"
+                      :url "https://raw.githubusercontent.com/njdan5691/emacs-init/master/elisp-misc.el"
                       ))
 
 (use-package dired-efap
