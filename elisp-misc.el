@@ -2,7 +2,7 @@
 ;;
 ;; Author: Daniel <njdan.5691@gmail.com>
 ;; Keywords: lisp
-;; Version: 0.0.1
+;; Version: 0.1
 
 ;;; Commentary:
 
