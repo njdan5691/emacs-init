@@ -103,7 +103,8 @@
               ("t" . elispm:toggle-tab-width))
 
   :quelpa (elisp-misc :fetcher url
-                      :url "https://raw.githubusercontent.com/njdan5691/elisp-misc/master/elisp-misc.el"))
+                      :url "https://raw.githubusercontent.com/njdan5691/elisp-misc/master/elisp-misc.el"
+                      ))
 
 (use-package dired-efap
   :ensure t
@@ -539,7 +540,8 @@ If the input is non-empty, it is inserted at point."
     (use-package idev
       ;;:disabled
       :defer t
-      :quelpa (idev :fetcher github :repo "njdan5691/idev")
+      ;;:quelpa (idev :fetcher github :repo "njdan5691/idev")
+      :quelpa (idev :fetcher url :url "https://raw.githubusercontent.com/njdan5691/emacs-init/master/idev.el")
       :bind(
             :map zz:my-prefix
             ("p" . idev:select-project)
