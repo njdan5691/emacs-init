@@ -103,9 +103,7 @@
               ("t" . elispm:toggle-tab-width))
 
   :quelpa (elisp-misc :fetcher url
-                      ;;:url "https://raw.githubusercontent.com/njdan5691/elisp-misc/master/elisp-misc.el"
-                      :url "https://raw.githubusercontent.com/njdan5691/emacs-init/master/elisp-misc.el"
-                      ))
+                      :url "https://raw.githubusercontent.com/njdan5691/emacs-init/master/elisp-misc.el"))
 
 (use-package dired-efap
   :ensure t
@@ -572,6 +570,11 @@ If the input is non-empty, it is inserted at point."
             ("e" . idev:file-history))
       ))
 
+
+(defun revert-buffer-no-confirm ()
+    "Revert buffer without confirmation."
+    (interactive)
+    (revert-buffer :ignore-auto :noconfirm))
 
 (defun display-startup-echo-area-message ()
   (message "Initialization Completed"))
