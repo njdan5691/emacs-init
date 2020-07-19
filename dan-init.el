@@ -25,6 +25,7 @@
 
 (setq
  inhibit-splash-screen t
+ confirm-kill-processes nil
  initial-scratch-message nil
  package--init-file-ensured t
  initial-major-mode 'ielm
