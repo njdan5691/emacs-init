@@ -25,6 +25,7 @@
 
 (setq
  inhibit-splash-screen t
+ confirm-kill-process nil
  initial-scratch-message nil
  package--init-file-ensured t
  initial-major-mode 'ielm
@@ -152,6 +153,7 @@
               (lambda ()
                 (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
                   (ggtags-mode 1))))))
+
 
 (use-package counsel-gtags
   :ensure t
@@ -369,7 +371,8 @@ If the input is non-empty, it is inserted at point."
     (interactive)
     (let* ((file (dired-get-filename nil t)))
       (call-process "xdg-open" nil 0 nil file)))
-  (setq dired-listing-switches "-alGhvF --group-directories-first"))
+  (setq dired-listing-switches "-alGhv --group-directories-first"
+        dired-copy-preserve-time nil))
 
 
 (use-package dired-x
