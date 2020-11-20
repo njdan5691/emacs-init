@@ -12,7 +12,8 @@
       (set-foreground-color "white")
       ;;(set-face-attribute 'default t :font "Consolas-20")
       ;;(set-face-attribute 'default t :font "Office Code Pro-26")
-      (set-default-font "Consolas-20")))
+      (set-frame-font "Consolas-19" nil t)
+      ))
 
 (unless (eq window-system 'x)
   (xterm-mouse-mode))
@@ -25,11 +26,7 @@
 
 (setq
  inhibit-splash-screen t
-<<<<<<< HEAD
- confirm-kill-process nil
-=======
  confirm-kill-processes nil
->>>>>>> 835476b8afd89f698c544eb92b120086beee26ca
  initial-scratch-message nil
  package--init-file-ensured t
  initial-major-mode 'ielm
@@ -242,6 +239,51 @@
 
 (use-package recentf-ext
   :ensure t)
+
+(use-package ivy-rich
+  :ensure t
+  :config (ivy-rich-mode 1)
+  (setq ivy-virtual-abbreviate 'abbreviate
+        ivy-rich-path-style 'abbrev )
+  ;; use buffer-file-name instead of default-directory or list-buffers-directory
+  ;; so that special buffers, e.g. *scratch* don't get a directory (we return nil in those cases)
+  (defun ivy-rich--switch-buffer-directory (candidate)
+    (let* ((buffer (get-buffer candidate))
+           (fn (buffer-file-name buffer)))
+      ;; if valid filename, i.e. buffer visiting file, return containing directory
+      ;; if dired visiting directory, return that directory
+      ;; else return nil
+      (if fn (directory-file-name fn) (buffer-local-value 'dired-directory buffer))))
+
+  ;; override ivy-rich project root finding to use FFIP or to skip completely
+  (defun ivy-rich-switch-buffer-root (candidate)
+    ;; 1. changed let* to when-let*; if our directory func above returns nil,
+    ;;    we don't want to try and find project root
+    (when-let* ((dir (ivy-rich--switch-buffer-directory candidate)))
+      (unless (or (and (file-remote-p dir)
+                       (not ivy-rich-parse-remote-buffer))
+                  ;; Workaround for `browse-url-emacs' buffers , it changes
+                  ;; `default-directory' to "http://" (#25)
+                  (string-match "https?://" dir))
+        (cond
+         ;; 2. replace the project-root-finding
+         ;; a. add FFIP for projectile-less project-root finding (on my setup much faster) ...
+         ((require 'find-file-in-project nil t)
+          (let ((default-directory dir))
+            (ffip-project-root)))
+         ;; b. OR disable project-root-finding altogether
+         (t "")
+         ((bound-and-true-p projectile-mode)
+          (let ((project (or (ivy-rich--local-values
+                              candidate 'projectile-project-root)
+                             (projectile-project-root dir))))
+            (unless (string= project "-")
+              project)))
+         ((require 'project nil t)
+          (when-let ((project (project-current nil dir)))
+            (car (project-roots project))))
+         )))))
+
 
 (use-package web-mode
   :ensure t
