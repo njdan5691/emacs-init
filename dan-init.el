@@ -409,6 +409,23 @@ If the input is non-empty, it is inserted at point."
               ("r" . dired-efap)
               ("s" . zz:dired-switch-edit))
   :config
+    (defvar dired-compress-files-alist
+      '(("\\.tar\\.gz\\'" . "tar -cf - %i | gzip -c9 > %o")
+        ("\\.tar\\.bz2\\'" . "tar -cf - %i | bzip2 -c9 > %o")
+        ("\\.tar\\.xz\\'" . "tar -cf - %i | xz -c9 > %o")
+        ("\\.tar\\.zst\\'" . "tar -cf - %i | zstd -19 -o %o")
+        ("\\.zip\\'" . "zip %o -r --filesync %i")
+        ("\\.7z\\'" . "7z a %o %i")
+        )
+      "Control the compression shell command for `dired-do-compress-to'.                                                          
+                                                                                                                                  
+Each element is (REGEXP . CMD), where REGEXP is the name of the                                                                   
+archive to which you want to compress, and CMD is the                                                                             
+corresponding command.                                                                                                            
+                                                                                                                                  
+Within CMD, %i denotes the input file(s), and %o denotes the                                                                      
+output file. %i path(s) are relative, while %o is absolute.")
+
   (defun zz:dired-switch-edit ()
     (interactive)
     (dired-sort-toggle-or-edit t))
