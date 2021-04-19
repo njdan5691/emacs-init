@@ -401,6 +401,10 @@ If the input is non-empty, it is inserted at point."
   :commands (dired-dwim-target-directory)
   :bind (
          :map dired-mode-map
+              ("C-c o" . zz:dired-open-file)
+              ("C-c c" . dired-do-compress))
+   :bind (
+         :map dired-mode-map
               :prefix-map zz:my-dired-prefix
               :prefix "z"
               ("o" . dired-omit-mode)
