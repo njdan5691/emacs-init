@@ -307,6 +307,8 @@
   :config
   (setq js-indent-level 2))
 
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+
 (use-package cc-mode
   :ensure auto-complete
   :defer t
