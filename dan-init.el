@@ -71,6 +71,10 @@
 (package-initialize)
 (defun package--save-selected-packages (&rest opt) nil)
 
+(defun ff (file)
+  (find-file (expand-file-name file)))
+
+
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
@@ -117,7 +121,8 @@
   :bind (:map zz:my-prefix
               ("TAB" . elispm:reformat-buffer)
               ("k" . elispm:kill-other-buffers)
-              ("h" . elispm:find-file-hints)
+              ("h" . elispm:find-file-hints)   
+	      ("d" . (lambda () (interactive) (ff "~/Downloads")))
               ("x" . elm:remove-lines)
               ("t" . elispm:toggle-tab-width))
 
