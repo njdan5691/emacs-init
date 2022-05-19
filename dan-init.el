@@ -93,6 +93,7 @@
   :ensure t
   :init
   (setq which-key-side-window-max-height 0.50)
+  (setq which-key-min-display-lines 7)
   (which-key-mode))
 
 (use-package quelpa-use-package
@@ -115,6 +116,7 @@
 (global-unset-key (kbd "<f3>"))
 (global-unset-key (kbd "C-x C-o"))
 (global-set-key (kbd "C-z")       'save-buffers-kill-emacs)
+(global-set-key (kbd "C-_")  'hippie-expand)
 
 (use-package elisp-misc
   :ensure t
